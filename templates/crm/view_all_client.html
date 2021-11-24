@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div id="wrapper">
+<div class="navbar-custom">
+      {% include 'crm/navbar.html' %}
+      <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+          <li>
+              <button class="button-menu-mobile disable-btn waves-effect">
+                  <i class="fe-menu"></i>
+              </button>
+          </li>
+   
+          <li>
+              <h4 class="page-title-main">Client Master/View all</h4>
+          </li>
+   
+      </ul>
+   </div>   {% include 'crm/sidebar.html' %}
+   <div class="content-page">
+      <div class="content">
+         <div class="container">            
+            <div class="card-box">
+               <form action="">
+                  <div class="row">
+                     <div class="col-sm-3">
+                        <div class="row">
+                           <div class="col-sm mb-2">
+                              <select class="form-control">
+                                 <option>Society</option>                     
+                              </select>
+                           </div>
+                           <div class="col-sm mb-2">
+                              <select class="form-control" disabled="disabled">
+                                 <option value="">Block</option>
+                              </select>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-sm-3">
+                        <div class="row">
+                           <div class="col-sm mb-2">
+                              <select class="form-control">                              
+                                 <option>Floor</option>                     
+                              </select>
+                           </div>
+                           <div class="col-sm mb-2">
+                              <select class="form-control" disabled="disabled">
+                                 <option value="">Property</option>
+                              </select>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-sm-6">
+                        <div class="row">
+                           <div class="col-sm-4 mb-2">
+                              <select class="form-control" disabled="disabled">
+                                 <option value="Type of User">Type of User</option>
+                              </select>
+                           </div>
+                           <div class="col-sm-8 mb-2">
+                              <span class="d-flex">
+                                 <input type="text" class="form-control ml-2" placeholder="Client Name">
+                                 <button class="btn btn-golden ml-2" type="submit"><i class="fe-search"></i></button>
+                              </span>
+                           </div>
+                        </div>
+                     </div>
+                     
+                  </div>
+                  <span class="d-flex mb-3">                                                
+                     <label class="m-2"></label>
+                     
+                     <label class="m-2"></label>
+                     
+                     <label class="m-2"></label>
+                     
+                     <label class="m-2"></label>
+                     
+                     <label class="m-2"></label>
+                     
+                     
+                  </span>
+               </form>
+               <div class="responsive-table-plugin">
+                  <div class="table-rep-plugin">
+                     <div class="table-responsive" data-pattern="priority-columns">
+                        <table id="tech-companies-1" class="table table-striped mb-0">
+                           <thead>
+                           <tr>
+                               <th>Client Id</th>
+                               <th data-priority="1">User Type</th>
+                               <th data-priority="3">Client Name</th>
+                               <th data-priority="1">Society</th>
+                               <th data-priority="3">Block</th>
+                               <th data-priority="3">Floor</th>
+                               <th data-priority="6">Type of Property</th>
+                              
+                           </tr>
+                           </thead>
+                           <tbody>
+                              {% for client in clients %}
+                              <tr>
+                                 <th>{{client.id}}</th>
+                                 <td>{{client.user_type}}</td>
+                                 <td>{{client.user.first_name}} <span class="co-name">{{client.user.last_name}}</span></td>                                        
+                                 <td>sddb</td>
+                                 <td>sddb</td>
+                                 <td>sddb</td>
+                                 <td>
+                                   <a href=""><i class="mdi mdi-square-edit-outline mdi-24px"></i></a>
+                                 </td>
+                              </tr>
+                              {% endfor %}
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+            </div>               
+         </div>
+      </div>
+   </div>
+</div>
+
+{% endblock content %}
+

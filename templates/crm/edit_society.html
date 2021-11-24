@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div id="wrapper">
+<div class="navbar-custom">
+      {% include 'crm/navbar.html' %}
+      <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+          <li>
+              <button class="button-menu-mobile disable-btn waves-effect">
+                  <i class="fe-menu"></i>
+              </button>
+          </li>
+   
+          <li>
+              <h4 class="page-title-main">Society Master/Society/Edit</h4>
+          </li>
+   
+      </ul>
+   </div>   {% include 'crm/sidebar.html' %}
+   <div class="content-page">
+      <div class="content">
+         <div class="container">
+            <div class="card-box">
+               <form action="" method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}                                              
+                  <div class="row">
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <label for="id_society_title">Society Title</label>                     
+                           {% render_field SocietyForm.society_title class="form-control" placeholder="Society Title" %}
+                        </div>
+                        <div class="form-group">
+                           <label for="id_society_description">Society Description</label>                     
+                           {% render_field SocietyForm.society_description class="form-control" placeholder="Society Description..." %}
+                        </div>
+                        
+                     </div> 
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <label for="id_society_brand">Society Brand</label>                     
+                           {% render_field SocietyForm.society_brand class="form-control" placeholder="Society Brand" %}
+                        </div>
+                        <div class="form-group">
+                           <label for="id_society_image">Society Image</label>                     
+                           {% render_field SocietyForm.society_image class="form-control" %}
+                        </div>
+                        <div class="form-group">
+                           <label for="id_society_image">Site Plan</label>                     
+                           {% render_field SocietyForm.site_plan class="form-control" %}
+                        </div>
+                        <div class="form-group">
+                           <label for="id_society_image">Lease Out Plan</label>                     
+                           {% render_field SocietyForm.lease_out_plan class="form-control" %}
+                        </div>
+                     </div>  
+                  </div> 
+                  
+                  <div class="form-group mb-3">
+                     <div class="custom-control custom-checkbox">
+                         {{SocietyForm.errors}}
+                        {% for message in messages %}
+                           {{message}}
+                        {% endfor %} 
+                     </div>
+                  </div>
+                  <div class="form-group mb-0 text-center">
+                     <button class="btn btn-golden btn-rounded" type="submit"> Update Society </button>
+                     
+                  </div>
+
+              </form>
+            </div>            
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock content %}

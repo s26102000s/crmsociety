@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div id="wrapper">
+<div class="navbar-custom">
+      {% include 'crm/navbar.html' %}
+      <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+          <li>
+              <button class="button-menu-mobile disable-btn waves-effect">
+                  <i class="fe-menu"></i>
+              </button>
+          </li>
+   
+          <li>
+              <h4 class="page-title-main">My Profile</h4>
+          </li>
+   
+      </ul>
+   </div>   {% include 'crm/sidebar.html' %}
+   <div class="content-page">
+      <div class="content">
+         <div class="container-fluid">
+            <div class="row card p-3">
+               <form action="" method="POST">
+                  {% csrf_token %} 
+                  <div class="card-box">
+                     <h4>Personal Information:</h4>
+                     <div class="row">
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="id_username">Username</label>
+                              {% render_field ProfileForm.username class="form-control" placeholder="Username" %}
+                           </div> 
+                        </div>
+                     </div>
+                        
+                     <div class="row">
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="id_first_name">First Name</label>                     
+                              {% render_field ProfileForm.first_name class="form-control" placeholder="First Name" %}
+                           </div>
+                           <div class="form-group">
+                              <label for="id_contact">Contact</label>
+                              {% render_field ProfileForm.contact class="form-control" placeholder="Contact" %}
+                           </div>
+                           <div class="form-group">
+                              <label for="id_password1">Password</label>
+                              {% render_field ProfileForm.password1 class="form-control" placeholder="Password" %}
+                           </div>
+                           <div class="form-group">
+                              <label for="id_permanent_address">Permanent Address</label>
+                              {% render_field ProfileForm.permanent_address class="form-control" placeholder="Permanent Address" %}
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="id_last_name">Last Name</label>
+                              {% render_field ProfileForm.last_name class="form-control" placeholder="Last Name" %}
+                           </div>
+                           <div class="form-group">
+                              <label for="id_email">Email Address</label>
+                              {% render_field ProfileForm.email class="form-control" placeholder="Email Address" %}
+                           </div>
+                           <div class="form-group">
+                              <label for="id_password2">Confirm Password</label>
+                              {% render_field ProfileForm.password2 type="password" class="form-control" placeholder="Confirm Password" %}
+                           </div>
+                           <div class="form-group">
+                              <label for="id_current_address">Current Address</label>
+                              {% render_field ProfileForm.current_address class="form-control" placeholder="Current Address" %}
+                           </div>
+                        </div>
+                     </div> 
+                  </div>
+                                    
+                  <div class="form-group mb-3">
+                     <div class="custom-control custom-checkbox">
+                         {{ProfileForm.errors}}
+                        {% for message in messages %}
+                           {{message}}
+                        {% endfor %} 
+                     </div>
+                  </div>
+                  <div class="form-group mb-0 text-center">
+                     <button class="btn btn-golden" type="submit"> Update </button>
+                     
+                  </div>
+
+              </form>
+            </div>            
+         </div>
+      </div>
+   </div>
+</div>
+
+
+{% endblock content %}

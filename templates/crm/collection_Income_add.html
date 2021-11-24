@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div id="wrapper">
+<div class="navbar-custom">
+      {% include 'crm/navbar.html' %}
+      <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+          <li>
+              <button class="button-menu-mobile disable-btn waves-effect">
+                  <i class="fe-menu"></i>
+              </button>
+          </li>
+   
+          <li>
+              <h4 class="page-title-main">Collection Master/Income from Fund/Add</h4>
+          </li>
+   
+      </ul>
+   </div>   {% include 'crm/sidebar.html' %}
+   <div class="content-page">
+      <div class="content">
+         <div class="container-fluid">
+            <div class="row card p-3">
+               <h3 style="text-align: center;">Collection income from fund</h3>
+               <form action="" method="POST">
+                  {% csrf_token %}                   
+                     <div class="row justify-content-center align-items-center">
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="id_first_name">Year : </label> 
+                              {% render_field collection_Income.year class="form-control" %}            
+                           </div>
+                           <div class="form-group">
+                              <label for="id_first_name">Amount :  </label> 
+                              {% render_field collection_Income.amount class="form-control" %}             
+                           </div>
+                           <div class="form-group">
+                              <label for="id_first_name">ROI: </label>
+                              {% render_field collection_Income.ROI class="form-control" %}                                               
+                           </div>
+                           <div class="form-group">
+                              <label for="id_first_name">Month: </label>
+                              {% render_field collection_Income.month class="form-control" %}                                               
+                           </div>
+                           <div class="form-group">
+                              <label for="id_first_name">Income From Fund: </label>
+                              {% render_field collection_Income.income_from_fund class="form-control" %}                                               
+                           </div>
+                        </div>
+                     </div>
+                     <div class="form-group mb-3">
+                        <div class="custom-control custom-checkbox">
+                            {{collection_Income.errors}}
+                           {% for message in messages %}
+                              {{message}}
+                           {% endfor %} 
+                        </div>
+                     </div> 
+                     <div class="form-group mb-0 text-center">
+                        <button class="btn btn-golden btn-rounded " type="submit"> Generate Interest From Fund </button>                        
+                     </div>
+               
+               </form>
+            </div>            
+         </div>
+      </div>
+   </div>
+</div>
+
+
+{% endblock content %}

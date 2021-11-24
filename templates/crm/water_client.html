@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div id="wrapper">
+<div class="navbar-custom">
+      {% include 'crm/navbar.html' %}
+      <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+          <li>
+              <button class="button-menu-mobile disable-btn waves-effect">
+                  <i class="fe-menu"></i>
+              </button>
+          </li>
+   
+          <li>
+              <h4 class="page-title-main">Water Master/Add Bill/Client</h4>
+          </li>
+   
+      </ul>
+   </div>   {% include 'crm/sidebar.html' %}
+   <div class="content-page">
+      <div class="content">
+         <div class="container">
+            <div class="card-box">
+               <form action="" method="post">
+                  {% csrf_token %}                                              
+                  <div class="card row">
+                    <h3 style="text-align: center;">Water of Society</h3>
+                    <hr/>
+                    
+                    <div class="row">
+                       <div class="col-md-6">
+                          <div class="form-group">
+                             <label for="id_first_name">Society : </label> 
+                             {% render_field WaterBillForm.society class="form-control" %}
+  
+                          </div>
+                       </div>
+                       
+                       <div class="col-md-6">  
+                          <div class="form-group">
+                             <label for="id_contact">Block : </label>
+                             {% render_field WaterBillForm.block class="form-control" %}
+           
+                          </div>
+                       </div>
+                 </div>
+                 <div class="row">
+                    <div class="col-md-6">
+                       <div class="form-group">
+                          <label for="id_first_name">Floor : </label> 
+                          {% render_field WaterBillForm.floor class="form-control" %}
+         
+                       </div>
+                    </div>
+                    
+                    <div class="col-md-6">  
+                       <div class="form-group">
+                          <label for="id_contact">Property Type : </label>
+                          {% render_field WaterBillForm.property_type class="form-control" %}
+         
+                       </div>
+                    </div>
+              </div>
+              <div class="row">
+                 <div class="col-md-6">
+                    <div class="form-group">
+                       <label for="id_first_name">Property Number : </label>
+                       {% render_field WaterBillForm.property_number class="form-control" %}
+              
+                    </div>
+                 </div>
+                 
+                 <div class="col-md-6">  
+                    <div class="form-group">
+                       <label for="id_contact">Client Name : </label>
+                       {% render_field WaterBillForm.client_name class="form-control" %}
+                   
+                    </div>
+                 </div>
+              </div>
+               <div class="row">
+                  <div class="col-md-6">
+                     <div class="form-group">
+                        <label for="id_first_name">Consumption in Units : </label>
+                        {% render_field WaterBillForm.consumption_unit class="form-control" %}
+
+                     </div>
+                  </div>
+
+                  <div class="col-md-6">  
+                     <div class="form-group">
+                        <label for="id_contact">Per Unit Charge : </label>
+                        {% render_field WaterBillForm.per_unit_charge class="form-control" %}
+
+                     </div>
+                  </div>
+               </div>
+               <div class="form-group mb-3">
+                  <div class="custom-control custom-checkbox">
+                      {{WaterBillForm.errors}}
+                     {% for message in messages %}
+                        {{message}}
+                     {% endfor %} 
+                  </div>
+               </div>
+                 <div class="form-group mb-0 text-center">
+                    <button class="btn btn-golden" type="submit"> ADD </button>
+                    
+                 </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>         
+</div>
+{% endblock content %}

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div id="wrapper">
+<div class="navbar-custom">
+      {% include 'crm/navbar.html' %}
+      <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+          <li>
+              <button class="button-menu-mobile disable-btn waves-effect">
+                  <i class="fe-menu"></i>
+              </button>
+          </li>
+   
+          <li>
+              <h4 class="page-title-main">Society Expenses Master/Dashboard</h4>
+          </li>
+   
+      </ul>
+   </div>   {% include 'crm/sidebar.html' %}
+   <div class="content-page">
+      <div class="content">
+         <div class="container-fluid">  
+            <div class="row">
+               <div class="col-xl-4">
+                  <div class="card-box">
+                     <div class="dropdown float-right">
+                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
+                            <i class="mdi mdi-dots-vertical"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item">Action</a>
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item">Another action</a>
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item">Something else</a>
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
+                        </div>
+                    </div>
+                    <h4 class="header-title mt-0">Statistics</h4>
+                    <div id="morris-bar-example" dir="ltr" style="height: 280px;" class="morris-chart"></div>
+                  </div>
+               </div>      
+            </div>
+         </div>
+      </div>
+   </div>   
+</div>
+{% endblock content %}

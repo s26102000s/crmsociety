@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div id="wrapper">
+<div class="navbar-custom">
+      {% include 'crm/navbar.html' %}
+      <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+          <li>
+              <button class="button-menu-mobile disable-btn waves-effect">
+                  <i class="fe-menu"></i>
+              </button>
+          </li>
+   
+          <li>
+              <h4 class="page-title-main">Society Master/Floor/Edit</h4>
+          </li>
+   
+      </ul>
+   </div>   {% include 'crm/sidebar.html' %}
+   <div class="content-page">
+      <div class="content">
+         <div class="container">
+            <div class="card-box">
+               <form action="" method="post">
+                  {% csrf_token %}                                              
+                  <div class="row justify-content-center mt-5">
+                     <div class="col-md-4">
+                        <div class="form-group">
+                           <label for="id_society">Society</label>                     
+                           {% render_field FloorForm.society class="form-control" %}
+                        </div>
+                        <div class="form-group">
+                           <label for="id_block">Block</label>                     
+                           {% render_field FloorForm.blocks class="form-control" %}
+                        </div>
+                        <div class="form-group">
+                           <label for="id_floor">Number of Floors</label>                     
+                           {% render_field FloorForm.floor class="form-control" %}
+                        </div>                        
+                     </div>
+                  </div>
+                  <div class="form-group mb-3">
+                     <div class="custom-control custom-checkbox">
+                         {{FloorForm.errors}}
+                        {% for message in messages %}
+                           {{message}}
+                        {% endfor %} 
+                     </div>
+                  </div>
+                  <div class="form-group mb-0 text-center">
+                     <button class="btn btn-golden btn-rounded" type="submit"> Update Floors </button>
+                     
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock content %}

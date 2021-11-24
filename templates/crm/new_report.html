@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div id="wrapper">
+<div class="navbar-custom">
+      {% include 'crm/navbar.html' %}
+      <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+          <li>
+              <button class="button-menu-mobile disable-btn waves-effect">
+                  <i class="fe-menu"></i>
+              </button>
+          </li>
+   
+          <li>
+              <h4 class="page-title-main">Report Master</h4>
+          </li>
+   
+      </ul>
+   </div>   {% include 'crm/sidebar.html' %}
+   <div class="content-page">
+      <div class="content">
+         <div class="container-fluid">
+            <div class="row card p-3">
+               
+                  
+                  <h3 style="text-align: center;">Report View</h3>
+                  <hr/>                  
+                  <div class="row">
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <label for="id_first_name">From : </label>
+                           {% render_field ReportForm.From class="form-control" type="date"%}                                      
+                        </div>
+                        <div class="form-group">
+                           <label for="id_first_name">Type : </label> 
+                           {% render_field ReportForm.property_type class="form-control" %}  
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <label for="id_first_name">To : </label>
+                           {% render_field ReportForm.To class="form-control" type="date"%}                                     
+                        </div>
+                     </div>               
+                  </div>                                     
+             <div class="row mb-4">
+                <div class="col-md-6">
+                  <label></label>
+                <button class="btn btn-golden form-control" id="viewtable"> View </button>
+              
+                </div>
+                <div class="col-md-6">
+                  <label></label>
+                  <button class="btn btn-golden form-control"> Dowanload </button>
+                
+                </div>
+  
+
+             </div>
+             
+<!-- table starts -->
+                  <div class="distable" style="display: none;">
+                     <table class="table mt-4" style=" border-collapse: collapse;">
+                        <thead class="thead-dark">
+                        <tr>
+                           <th scope="col">From</th>
+                           <th scope="col">To</th>
+                           <th scope="col">Type</th>
+                           
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                           <td>sunil</td>
+                           <td>98765</td>
+                           <td>abcd</td>                           
+                           
+                        </tr>
+                        <tr>
+                            <td>Goursv</td>
+                            <td>98765</td>                            
+                            <td>sagdjh</td>
+                            
+                        </tr>
+                        <tr>
+                            <td>Goursv</td>
+                            <td>98765</td>
+                            <td>sdds</td>
+                            
+                            
+                        </tr>
+                        </tbody>
+                     </table>
+                  </div> 
+            
+            </div>            
+         </div>
+      </div>
+   </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+   $("#viewtable").click(function(){
+     
+       $(".distable").css('display','block'); // checked
+      
+   });
+</script>
+
+
+{% endblock content %}

@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div id="wrapper">
+<div class="navbar-custom">
+      {% include 'crm/navbar.html' %}
+      <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+          <li>
+              <button class="button-menu-mobile disable-btn waves-effect">
+                  <i class="fe-menu"></i>
+              </button>
+          </li>
+   
+          <li>
+              <h4 class="page-title-main">Society Master/Block/New</h4>
+          </li>
+   
+      </ul>
+   </div>   {% include 'crm/sidebar.html' %}
+   <div class="content-page">
+      <div class="content">
+         <div class="container">
+            <div class="card-box">
+               <form action="" method="POST">
+                  {% csrf_token %}
+                                                     
+                  <div class="row justify-content-center mt-5">
+                     <div class="col-md-4">
+                        <div class="form-group">
+                           <label for="id_society_title">Society</label>  
+                                 <select name="society" class="form-control">
+                                     <option selected disabled =true >---- Select option ----</option>
+                                     {% for sts in stss %}
+                                     <option vlaue="{{ sts.id }}">{{ sts.society_title }}</option>
+                                    {% endfor %}
+                                 </select>                       
+                        </div>
+                        <div class="form-group">
+                           <div class="list_wrapper">
+                              <label for="id_block_a">Block</label>
+                              <span class="d-flex">
+                                 <input type="text" name="block0" class="form-control" placeholder="Block">
+                                 <button class="btn btn-primary ml-2 list_add_button" type="button">+</button>
+                              </span>
+                              
+                                
+                           </div>       
+                           <!-- {% render_field BlockForm.block class="form-control" placeholder="Block" %} -->
+                        </div>
+                        
+                     </div>
+
+                  </div>
+                  
+                  <input type="hidden" id="totallength" name="totallength">
+                  <div class="form-group mb-3">
+                     <div class="custom-control custom-checkbox">
+                         {{BlockForm.errors}}
+                        {% for message in messages %}
+                           {{message}}
+                        {% endfor %} 
+                     </div>
+                  </div>
+                  <div class="form-group mb-0 text-center">
+                     <button class="btn btn-success btn-rounded" type="submit"> Add Blocks </button>
+                     
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>         
+</div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+
+$(document).ready(function()
+ 
+    {
+	var x = 1;
+	var list_maxField = 10; 
+	
+	$('.list_add_button').click(function()
+	    {
+	    if(x < list_maxField){ 
+	        
+           $("#totallength").val(x)
+	        var list_fieldHTML = '<span class="d-flex mt-2"><input name="block'+x+'" type="text" placeholder="Block" class="form-control"/><a href="javascript:void(0);" class="list_remove_button ml-2 btn btn-danger">-</a> </span>';
+	        x++;
+           $('.list_wrapper').append(list_fieldHTML);
+	    }
+        });
+        $('.list_wrapper').on('click', '.list_remove_button', function()
+        {
+           $(this).closest('div.row').remove();
+           x--;
+           $("#totallength").val(x)
+        });
+   });
+
+</script>
+
+{% endblock content %}

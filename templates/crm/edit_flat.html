@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div id="wrapper">
+<div class="navbar-custom">
+      {% include 'crm/navbar.html' %}
+      <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+          <li>
+              <button class="button-menu-mobile disable-btn waves-effect">
+                  <i class="fe-menu"></i>
+              </button>
+          </li>
+   
+          <li>
+              <h4 class="page-title-main">Society Category Master/Flats/Edit</h4>
+          </li>
+   
+      </ul>
+   </div>   {% include 'crm/sidebar.html' %}
+   <div class="content-page">
+      <div class="content">
+         <div class="container">
+            <div class="card-box">
+               <form action="" method="post">
+                  {% csrf_token %}                             
+                  <h4>Society Details</h4>                 
+                  <div class="row justify-content-center">
+                     <div class="col-md-4">
+                        <div class="form-group">
+                           <label for="id_society">Society</label>                     
+                           {% render_field FlatForm.society class="form-control" %}
+                        </div>
+                     </div>
+                     <div class="col-md-4">
+                        <div class="form-group">
+                           <label for="id_block">Block</label>                     
+                           {% render_field FlatForm.block class="form-control" %}
+                        </div>
+                     </div>
+                     <div class="col-md-4">
+                        <div class="form-group">
+                           <label for="id_floor">Floor</label>                     
+                           {% render_field FlatForm.floor class="form-control" %}
+                        </div>
+                     </div>                                                
+                  </div>  
+                  <h4>Flat Details</h4>
+                  <div class="row justify-content-center">
+                     <div class="col-md-4">
+                        <div class="form-group">
+                           <label for="id_flat_number">Flat Number</label>                     
+                           {% render_field FlatForm.flat_number class="form-control" placeholder="Flat Number" %}
+                        </div>
+                     </div>
+                     <div class="col-md-4">
+                        <div class="form-group">
+                           <label for="id_bedroom">Bedrooms</label>                     
+                           {% render_field FlatForm.bedroom class="form-control" placeholder="Number of Bedrooms" %}
+                        </div>
+                     </div>
+                     <div class="col-md-4">
+                        <div class="form-group">
+                           <label for="id_hall">Hall</label>                     
+                           {% render_field FlatForm.hall class="form-control" placeholder="Number of Halls" %}
+                        </div>
+                     </div>                                                
+                  </div>   
+                  <div class="row justify-content-center">
+                     <div class="col-md-4">
+                        <div class="form-group">
+                           <label for="id_kitchen">Kitchen</label>                     
+                           {% render_field FlatForm.kitchen class="form-control" placeholder="Number of Kitchen" %}
+                        </div>
+                     </div>
+                     <div class="col-md-4">
+                        <div class="form-group">
+                           <label for="id_balcony">Balcony</label>                     
+                           {% render_field FlatForm.balcony class="form-control" placeholder="Number of Balcony" %}
+                        </div>
+                     </div>
+                     <div class="col-md-4">
+                        <div class="form-group">
+                           <label for="id_Area">Area</label>                     
+                           {% render_field FlatForm.Area class="form-control" placeholder="Area of Flat" %}
+                        </div>
+                     </div>                                                
+                  </div> 
+                  <div class="row justify-content-center">
+                     <div class="col-md-6">
+                        <h4>Ownership Details</h4>
+                        <div class="form-group">                           
+                           {% render_field FlatForm.ownership %}
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <h4>Occupancy Details</h4>
+                        <div class="form-group">                           
+                           {% render_field FlatForm.occupancy %}
+                        </div>
+                     </div>
+                  </div>      
+                  <div class="form-group mb-3">
+                     <div class="custom-control custom-checkbox">
+                         {{FlatForm.errors}}
+                     </div>
+                  </div>
+                  <div class="form-group mb-3">
+                     <div class="custom-control custom-checkbox">
+                         {{FlatForm.errors}}
+                        {% for message in messages %}
+                           {{message}}
+                        {% endfor %} 
+                     </div>
+                  </div>
+                  <div class="form-group mb-0 text-center">
+                     <button class="btn btn-golden btn-rounded" type="submit"> Update Flat </button>                     
+                  </div>
+               </form>
+
+            </div>
+         </div>
+      </div>
+   </div>          
+</div>
+{% endblock content %}

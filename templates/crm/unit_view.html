@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div id="wrapper">
+<div class="navbar-custom">
+      {% include 'crm/navbar.html' %}
+      <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+          <li>
+              <button class="button-menu-mobile disable-btn waves-effect">
+                  <i class="fe-menu"></i>
+              </button>
+          </li>
+   
+          <li>
+              <h4 class="page-title-main">Unit Master/View</h4>
+          </li>
+   
+      </ul>
+   </div>   {% include 'crm/sidebar.html' %}
+   <div class="content-page">
+      <div class="content">
+         <div class="container-fluid">
+            <div class="row card p-3">
+               <form action="" method="POST" class="app-search">
+                  {% csrf_token %} 
+                     <h3 style="text-align: center;">Unit Views</h3>
+                     <div class="row justify-content-end mb-3">
+                        <div class="col-md-3">
+                           <form>
+                              <span class="d-flex">
+                                 <input type="text" class="form-control" placeholder="Search">
+                                 <button class="btn btn-golden ml-2" type="submit"><i class="fe-search"></i></button>
+                              </span>
+                          </form>
+                        </div>
+                     </div>  
+                     <table class="table">
+                        <thead class="thead-dark">
+                        <tr>
+                           <th scope="col">Society</th>
+                           <th scope="col">Unit For</th>
+                           <th scope="col">Type of Unit</th>
+                           <th scope="col">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        
+                        {% for unit in units %}
+                        <tr>
+                           <td>{{ unit.society }}</td>
+                           <td>{{ unit.unit_for }}</td>
+                           <td>{{ unit.type_of_unit }}</td>
+                           <td><a href="{% url 'CMS_app:edit_unit' unit.id %}"><i class="mdi mdi-square-edit-outline mdi-24px"></i></a></td>
+                        </tr>
+                        {% endfor %}
+                        
+                        </tbody>
+                     </table>
+                     
+              </form>
+
+              <div class="form-group mb-3">
+               <div class="custom-control custom-checkbox">
+                   {{SocietyForm.errors}}
+                  {% for message in messages %}
+                     {{message}}
+                  {% endfor %} 
+               </div>
+            </div>
+
+            </div>            
+         </div>
+      </div>
+   </div>
+</div>
+
+
+{% endblock content %}

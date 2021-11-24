@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div id="wrapper">
+<div class="navbar-custom">
+      {% include 'crm/navbar.html' %}
+      <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+          <li>
+              <button class="button-menu-mobile disable-btn waves-effect">
+                  <i class="fe-menu"></i>
+              </button>
+          </li>
+   
+          <li>
+              <h4 class="page-title-main">Client Master/New</h4>
+          </li>
+   
+      </ul>
+   </div>   {% include 'crm/sidebar.html' %}
+   <div class="content-page">
+      <div class="content">
+         <div class="container-fluid">
+            <div class="row card p-4">
+               <form action="" method="POST">
+                  {% csrf_token %} 
+                  <div class="card row">
+                     <h4>Personal Information:</h4>
+                     <div class="row">
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="id_username">Client Id</label>
+                              <input type="text" class="form-control" placeholder="Auto generated" disabled >
+                           </div>
+                        </div>
+                     </div>
+                         
+                     <div class="row">
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="id_first_name">First Name</label>                     
+                              {% render_field ClientForm.first_name class="form-control" placeholder="First Name" %}
+                           </div>
+                           <div class="form-group">
+                              <label for="id_contact">Contact</label>
+                              {% render_field ClientForm.mobile_number class="form-control" placeholder="Contact" %}
+                           </div>                           
+                           <div class="form-group">
+                              <label for="id_permanent_address">Permanent Address</label>
+                              {% render_field ClientForm.permanent_address class="form-control" placeholder="Permanent Address" %}
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="id_last_name">Last Name</label>
+                              {% render_field ClientForm.last_name class="form-control" placeholder="Last Name" %}
+                           </div>
+                           <div class="form-group">
+                              <label for="id_email">Email Address</label>
+                              {% render_field ClientForm.email_address class="form-control" placeholder="Email Address" %}
+                           </div>                           
+                           <div class="form-group">
+                              <label for="id_current_address">Current Address</label>
+                              {% render_field ClientForm.current_address class="form-control" placeholder="Current Address" %}
+                           </div>
+                        </div>
+                     </div> 
+                  </div>
+                  <div class="card row">
+                     <h4>Verification Detail:</h4>
+                     <div class="row">
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="id_aadhar_number">Aadhar Number</label>
+                              {% render_field ClientForm.aadhar_number class="form-control" placeholder="Aadhar Number" %}
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="id_PAN_number">PAN Number</label>
+                              {% render_field ClientForm.PAN_number class="form-control" placeholder="PAN Number" %}
+                           </div>
+                        </div>
+                     </div>                     
+                  </div>
+                  <div class="card row">
+                     
+                     <div class="row">
+                        <span class="ml-2 d-flex">
+                           <label for="id_user_type">User Type</label>
+                           {% render_field ClientForm.user_type type="checkbox" %}
+                        </span>
+                     </div>
+                     <div id="roleBase" style="display: none;">
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label for="id_username">Username</label>
+                                 {% render_field ClientUserForm.username class="form-control" placeholder="Enter Username" %}
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label for="id_password1">Password</label>
+                                 {% render_field ClientUserForm.password1 class="form-control" placeholder="Enter Password" %}
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label for="id_password2">Confirm Password</label>
+                                 {% render_field ClientUserForm.password2 class="form-control" placeholder="Confirm Password" %}
+                              </div>
+                           </div>
+                        </div>                        
+                        </div>
+                     <h4>Dates:</h4> 
+                     <div class="row">  
+                                             
+                        <div class="col-md-4">
+                           <div class="form-group">
+                              <label for="id_registry_date">Registry Date</label>
+                              {% render_field ClientForm.registry_date class="form-control" type="date" %}
+                           </div>
+                        </div>
+                        <div class="col-md-4">
+                           <div class="form-group">
+                              <label for="id_occupancy_date">Occupancy Date</label>
+                              {% render_field ClientForm.occupancy_date class="form-control" type="date" %}
+                           </div>
+                        </div>
+                        <div class="col-md-4">
+                           <div class="form-group">
+                              <label for="id_booking_date">Booking Date</label>
+                              {% render_field ClientForm.booking_date class="form-control" type="date" %}
+                           </div>
+                        </div>
+                     </div>
+                  </div>                  
+                  <div class="form-group mb-3">
+                     <div class="custom-control custom-checkbox">
+                         {{ClientForm.errors}}
+                        {% for message in messages %}
+                           {{message}}
+                        {% endfor %} 
+                     </div>
+                  </div>
+                  <div class="form-group mb-0 text-center">
+                     <button class="btn btn-golden btn-block" type="submit"> Create Client </button>
+                     
+                  </div>
+
+              </form>
+            </div>            
+         </div>
+      </div>
+   </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+   $("#id_user_type_1").change(function(){
+     if($(this).is(':checked')) 
+       $("#roleBase").show(); // checked
+     else
+       $("#roleBase").hide(); 
+   });
+</script>
+
+
+{% endblock content %}

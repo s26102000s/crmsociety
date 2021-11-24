@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div id="wrapper">
+<div class="navbar-custom">
+      {% include 'crm/navbar.html' %}
+      <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+          <li>
+              <button class="button-menu-mobile disable-btn waves-effect">
+                  <i class="fe-menu"></i>
+              </button>
+          </li>
+   
+          <li>
+              <h4 class="page-title-main">Discount Master/Add/Society</h4>
+          </li>
+   
+      </ul>
+   </div>   {% include 'crm/sidebar.html' %}
+   <div class="content-page">
+      <div class="content">
+         <div class="container-fluid">
+            <div class="row card p-3">
+                <form action="" method="POST">
+                {% csrf_token %} 
+                 
+                    <h3 style="text-align: center;">Add Discount Society</h3>
+                    <hr />
+                    <div class="row" >
+                        <div class="col-md-6">
+                            <input type="radio" name="type_rd" value="Society" checked> Society 
+                        </div>
+                        <div class="col-md-6">  
+                            <input type="radio" name="type_rd" value="UserSpecific" > User Specific
+                        </div>
+                    </div>
+
+<!-- Radio Button Ends Here -->
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="id_first_name">Society : </label> 
+                                {% render_field DiscountSocietyForm.society class="form-control" %}
+                        
+                            </div>
+                            </div>
+                            
+                            <div class="col-md-6">  
+                            <div class="form-group">
+                                <label for="id_contact">Block : </label>
+                                {% render_field DiscountSocietyForm.block class="form-control" %}
+                                   
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="id_first_name">Valid Period : </label> 
+                                {% render_field DiscountSocietyForm.period class="form-control" %}
+                               
+                            </div>
+                            </div>
+                            
+                            <div class="col-md-6">  
+                            <div class="form-group">
+                                <label for="id_contact">Discount in % : </label>
+                                {% render_field DiscountSocietyForm.dis_per class="form-control" %}
+                               
+                            </div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <div class="custom-control custom-checkbox">
+                                {{DiscountSocietyForm.errors}}
+                               {% for message in messages %}
+                                  {{message}}
+                               {% endfor %} 
+                            </div>
+                         </div> 
+                        <div class="form-group mb-0 text-center">
+                            <button class="btn btn-golden btn-rounded" type="submit"> ADD </button>
+                            
+                        </div>
+                    </form>  
+                
+<!-- User Specific Start -->
+                          
+<!-- user specific ends here -->
+                    
+          
+                    
+            </div>            
+         </div>
+      </div>
+   </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+    $("input[type='radio']").change(function(){
+    if($(this).val()=="Society")
+    {
+       $(location).attr("href" , "{% url 'CMS_app:discount_society_add' %}");
+    }
+    else if($(this).val() == "UserSpecific")
+    {
+      $(location).attr("href" , "{% url 'CMS_app:discount_user_add' %}");
+    }
+    
+    });
+    });
+</script>
+
+
+{% endblock content %}

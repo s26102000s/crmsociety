@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div id="wrapper">
+<div class="navbar-custom">
+      {% include 'crm/navbar.html' %}
+      <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+          <li>
+              <button class="button-menu-mobile disable-btn waves-effect">
+                  <i class="fe-menu"></i>
+              </button>
+          </li>
+   
+          <li>
+              <h4 class="page-title-main">Society Master/Floor/View</h4>
+          </li>
+   
+      </ul>
+   </div>   {% include 'crm/sidebar.html' %}
+   <div class="content-page">
+      <div class="content">
+         <div class="container">
+            <div class="card-box">
+               <div class="row justify-content-end mb-3">                  
+                  <div class="col-md-3">
+                     <form>
+                        <span class="d-flex">
+                           <input type="text" class="form-control" placeholder="Society Name">
+                           <button class="btn btn-golden ml-2" type="submit"><i class="fe-search"></i></button>
+                        </span>
+                    </form>
+                  </div>
+               </div>
+               <div class="table-responsive">
+                  <table class="table mb-0">
+                     <thead class="thead-dark">
+                     <tr>                         
+                         <th>Society Name</th>
+                         <th>Name of Blocks</th>
+                         <th>Number of Floors</th>
+                         <th>Action</th>
+                     </tr>
+                     </thead>
+                     <tbody>                        
+                        {% for f in floors %}
+                        <tr>                            
+                            <td>{{f.society}}</td>
+                            <td>{{f.blocks}}</td>
+                            <td>{{f.floor}}</td>
+                            <td>
+                              <a href="{% url 'CMS_app:edit_floor' f.id %}"><i class="mdi mdi-home-edit mdi-24px"></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                     </tbody>
+                  </table>
+              </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock content %}

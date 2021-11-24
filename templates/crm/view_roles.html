@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div id="wrapper">
+<div class="navbar-custom">
+      {% include 'crm/navbar.html' %}
+      <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+          <li>
+              <button class="button-menu-mobile disable-btn waves-effect">
+                  <i class="fe-menu"></i>
+              </button>
+          </li>
+   
+          <li>
+              <h4 class="page-title-main">Role Master/View all</h4>
+          </li>
+   
+      </ul>
+   </div>   {% include 'crm/sidebar.html' %}
+   <div class="content-page">
+      <div class="content">
+         <div class="container">
+            <div class="card-box">
+               <form action="">
+                  <div class="row mb-2">
+                     <div class="col-sm-12 col-md-3 col-lg-3 col-xs-12 col-xl-3 mb-3">
+                        <span class="d-flex">
+                           <input type="text" class="form-control" placeholder="Name">
+                           <button class="btn btn-golden ml-2" type="submit"><i class="fe-search"></i></button>
+                        </span>
+                        
+                     </div>
+                     <div class="col-sm-12 col-md-3 col-lg-3 col-xs-12 col-xl-3 mb-3">
+                        <select class="form-control">
+                           <option disable select="true">Select Role</option>
+                           {% for role in roles %}
+                              
+                              <option>{{role}}</option>                     
+                           {% endfor %}
+                        </select>
+                     </div>
+                     <div class="col-sm-12 col-md-3 col-lg-3 col-xs-12 col-xl-3 mb-3">
+                        <select class="form-control">
+                           <option disable select="true">Select Society</option>
+                           {% for s in society %}
+                              <option>{{s.name}}</option>                     
+                           {% endfor %}
+                        </select>
+                     </div>
+                     <div class="col-sm-12 col-md-3 col-lg-3 col-xs-12 col-xl-3 mb-3">
+                        <input type="date" class="form-control datepicker" id="datepicker" name="datepicker">         
+                     </div>  
+                  </div>              
+               </form>
+               <div class="table-responsive">
+                  <table class="table mb-0">
+                     <thead>
+                     <tr>                         
+                        <th>Name</th>
+                        <th>Role Assigned</th>
+                        <th>Society Assigned</th>
+                        <th>Mobile Number</th>                         
+                        <th>Date</th>                        
+                     </tr>
+                     </thead>
+                     <tbody>
+                        {% for r in roles %}
+                        <tr>                            
+                            <td>{{r.role}}</td>
+                            <td>{{r.}}</td>
+                            <td>{{r.}}</td>
+                            <td>{{r.}}</td>
+                            <td>{{r.}}</td>
+                            <td>{{r.}}</td>                            
+                        </tr>
+                        {% endfor %}
+                     </tbody>
+                  </table>
+              </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock content %}

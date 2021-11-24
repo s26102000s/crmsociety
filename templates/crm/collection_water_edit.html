@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div id="wrapper">
+<div class="navbar-custom">
+      {% include 'crm/navbar.html' %}
+      <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+          <li>
+              <button class="button-menu-mobile disable-btn waves-effect">
+                  <i class="fe-menu"></i>
+              </button>
+          </li>
+   
+          <li>
+              <h4 class="page-title-main">Collection Master/Water/Edit</h4>
+          </li>
+   
+      </ul>
+   </div>   {% include 'crm/sidebar.html' %}
+   <div class="content-page">
+      <div class="content">
+         <div class="container-fluid">
+            <div class="row card p-3">
+               <form action="" method="POST">
+                  {% csrf_token %}                   
+                  <h3 style="text-align: center;">Collection Water Edit</h3>                  
+                  <div class="row">
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <label for="id_first_name">Society : </label> 
+                           {% render_field CollectionWaterForm.society class="form-control" %}       
+   
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <label for="id_first_name">Property Type :  </label> 
+                           {% render_field CollectionWaterForm.property_type class="form-control" %}                         
+                        </div>
+                        <div class="form-group">
+                           <label for="id_contact">Floor : </label>
+                           {% render_field CollectionWaterForm.floor class="form-control" %}                       
+                        </div>
+                        <div class="form-group">
+                           <label for="id_first_name">Client Name : </label>
+                           {% render_field CollectionWaterForm.client_name class="form-control" value="auto generated" disabled=True %}                               
+                        </div>
+                     </div>
+                     <div class="col-md-6">  
+                        <div class="form-group">
+                           <label for="id_contact">Block : </label>
+                           {% render_field CollectionWaterForm.block class="form-control" %}          
+                        </div>
+                        <div class="form-group">
+                           <label for="id_first_name">Date : </label>
+                           {% render_field CollectionWaterForm.date class="form-control" type="date" %}                           
+                        </div>
+                        <div class="form-group">
+                           <label for="id_first_name">Water Bill Generated : </label>
+                           {% render_field CollectionWaterForm.water_bill_generated class="form-control" value="auto generated" disabled=True %}                             
+                        </div>
+                     </div>                     
+                  </div>
+                  <div class="row">
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <label for="id_first_name">Water Bill Received : </label>
+                           {% render_field CollectionWaterForm.water_bill_received class="form-control" %}                                    
+                        </div>
+                     </div>
+                  </div>
+                  <div class="form-group mb-3">
+                     <div class="custom-control custom-checkbox">
+                         {{CollectionWaterForm.errors}}
+                        {% for message in messages %}
+                           {{message}}
+                        {% endfor %} 
+                     </div>
+                  </div> 
+                  <div class="form-group mb-0 text-center">
+                     <button class="btn btn-golden btn-rounded" type="submit"> Update </button>
+                     
+                  </div>
+               
+              </form>
+            </div>            
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div id="wrapper">
+   <div class="navbar-custom">
+      {% include 'crm/navbar.html' %}
+      <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+          <li>
+              <button class="button-menu-mobile disable-btn waves-effect">
+                  <i class="fe-menu"></i>
+              </button>
+          </li>
+   
+          <li>
+              <h4 class="page-title-main">Role Master/Assign Role</h4>
+          </li>
+   
+      </ul>
+  </div>
+   {% include 'crm/sidebar.html' %}
+   <div class="content-page">
+      <div class="content">
+         <div class="container">
+            <div class="card-box">
+               <form action="">                  
+                  <span class=" d-flex col-md-10">
+                     <label class="m-2">Name</label>
+                     <select class="form-control">
+                        <option value="" disable select="true">Select Role Based User</option>
+                        {% for user in role_based_user %}
+                           <option>{{user.user.first_name}}</option>                     
+                        {% endfor %}
+                     </select> 
+                     <label class="m-2">Role</label>
+                     <select class="form-control">
+                        <option value="" disable select="true">Select Role</option>
+                        {% for role in roles %}
+                           <option>{{role}}</option>                     
+                        {% endfor %}
+                     </select>
+                     <label class="m-2">Society</label>
+                     <select class="form-control">
+                        <option value="" disable select="true">Select Society</option>
+                        {% for s in societies %}
+                           <option>{{s.society_title}}</option>                     
+                        {% endfor %}
+                     </select>           
+                  </span>
+               </form>
+               <div class="table-responsive">
+                  <table class="table mb-0">
+                     <thead>
+                     <tr>                         
+                        <th>Module</th>
+                        <th><i class="mdi mdi-eye-plus-outline"></i></th>
+                        <th><i class="mdi mdi-plus-box"></i></th>
+                        <th><i class="mdi mdi-pencil-outline"></i></th>                         
+                        <th><i class="mdi mdi-check-bold"></i></th>
+                        <th><i class="mdi mdi-delete"></i></th>
+                        <th>All</th>
+                        <th>Assign</th>
+                     </tr>
+                     </thead>
+                     <tbody>
+                        
+                        <tr>                            
+                            <td></td>
+                            <td><input type="checkbox" class="selectedId" name="chk" /></td>
+                            <td><input type="checkbox" class="selectedId" name="chk" /></td>
+                            <td><input type="checkbox" class="selectedId" name="chk" /></td>
+                            <td><input type="checkbox" class="selectedId" name="chk" /></td>
+                            <td><input type="checkbox" class="selectedId" name="chk" /></td>
+                            <td><input type="checkbox" id="selectall" onclick="selects()" ></input></td>
+                            <td>
+                               <a href=""><i class="mdi mdi-plus-circle mdi-24px"></i></a>
+                            </td>
+                        </tr>                        
+                        
+                     </tbody>
+                  </table>
+              </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<script>
+   function selects(){  
+      var ele=document.getElementsByName('chk');  
+      var s_all=document.getElementById('selectall');
+      if (s_all.checked= true){
+         for(var i=0; i<ele.length; i++){  
+             if(ele[i].type=='checkbox')  
+                 ele[i].checked=true;  
+         }  
+      }else{
+         for(var i=0; i<ele.length; i++){
+            if(ele[i].type=='checkbox')  
+                 ele[i].checked=false;  
+         }
+      }
+   }  
+
+</script>
+{% endblock content %}

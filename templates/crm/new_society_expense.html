@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div id="wrapper">
+<div class="navbar-custom">
+      {% include 'crm/navbar.html' %}
+      <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+          <li>
+              <button class="button-menu-mobile disable-btn waves-effect">
+                  <i class="fe-menu"></i>
+              </button>
+          </li>
+   
+          <li>
+              <h4 class="page-title-main">Society Expenses Master/New</h4>
+          </li>
+   
+      </ul>
+   </div>   {% include 'crm/sidebar.html' %}
+   <div class="content-page">
+      <div class="content">
+         <div class="container">
+            <div class="card-box">
+               <form action="" method="post" enctype="multipart/form-data">
+                  {% csrf_token %}                                                                
+                  <div class="row justify-content-center">
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <label for="id_society">Society</label>                     
+                           {% render_field SocietyExpenseForm.society class="form-control" %}
+                        </div>
+                        <div class="form-group">
+                           <label for="id_floor">Floor</label>                     
+                           {% render_field SocietyExpenseForm.floor class="form-control" %}
+                        </div>
+                        <div class="form-group">
+                           <label for="id_expense_by">Expense By</label>                     
+                           {% render_field SocietyExpenseForm.expense_by class="form-control" placeholder="Expense By" %}
+                        </div>
+                        <div class="form-group">
+                           <label for="id_reason">Reason</label>                     
+                           {% render_field SocietyExpenseForm.reason class="form-control" placeholder="Reason of Expense..." %}
+                        </div>
+                        <div class="form-group">
+                           <label for="id_date">Date</label>                     
+                           {% render_field SocietyExpenseForm.date class="form-control" type="date" %}
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <label for="id_property_type">Property Type</label>                     
+                           {% render_field SocietyExpenseForm.property_type class="form-control" %}
+                        </div>
+                        <div class="form-group">
+                           <label for="id_block">Block</label>                     
+                           {% render_field SocietyExpenseForm.block class="form-control" %}
+                        </div>
+                        <div class="form-group">
+                           <label for="expense_type">Expense Type</label>
+                           <div class="d-flex">
+                              <select class="form-control mt-1" name="expense_type" id="expense_type">
+                                 <option value=""></option>
+                                 <option value="">Maintenance</option>
+                                 <option value="">Repairing</option>
+                              </select>
+                              <a class="btn" id="extrabtn">
+                                 <i class="mdi mdi-plus-circle mdi-24px"></i>
+                              </a>
+                           </div> 
+                           
+                        </div>
+                        <div class="form-group" id="extrafield" style="display:none;">
+                           <span class="d-flex">
+                              <input type="text" name="extra" class="form-control mt-1">
+                              <i class="mdi mdi-check mdi-36px"></i>
+                           </span>                           
+                        </div>
+                        
+                        <div class="form-group">
+                           <label for="id_amount">Amount</label>                     
+                           {% render_field SocietyExpenseForm.Amount class="form-control" placeholder="Amount" %}
+                        </div>
+                        <div class="form-group">
+                           <label for="id_invoice">Upload Invoice</label>                     
+                           {% render_field SocietyExpenseForm.invoice class="form-control" %}
+                        </div>
+                        
+                     </div>                                                                     
+                  </div>                    
+                      
+                  <div class="form-group mb-3">
+                     <div class="custom-control custom-checkbox">
+                         {{SocietyExpenseForm.errors}}
+                        {% for message in messages %}
+                           {{message}}
+                        {% endfor %} 
+                     </div>
+                  </div>
+                  <div class="form-group mb-0 text-center">
+                     <button class="btn btn-golden btn-rounded" type="submit"> Add Expense </button>
+                     
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+   $("#extrabtn").click(function(){
+      
+       $("#extrafield").css('display','block'); // checked
+
+   });
+</script>
+
+{% endblock content %}

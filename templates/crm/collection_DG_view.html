@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div id="wrapper">
+   <div class="navbar-custom">
+      {% include 'crm/navbar.html' %}
+      <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+          <li>
+              <button class="button-menu-mobile disable-btn waves-effect">
+                  <i class="fe-menu"></i>
+              </button>
+          </li>
+   
+          <li>
+              <h4 class="page-title-main">Collection Master/DG/View</h4>
+          </li>
+   
+      </ul>
+   </div>
+   {% include 'crm/sidebar.html' %}
+   <div class="content-page">
+      <div class="content">
+         <div class="container">
+            <div class="card-box">
+               <form action="">
+                  <div class="row">
+                     <div class="col-sm-2 mb-2">
+                        <select class="form-control">                              
+                        <option>Property Type</option>                     
+                     </select> 
+                     </div>
+                     <div class="col-sm-2 mb-2">
+                        <select class="form-control">                              
+                        <option>Society</option>                     
+                     </select> 
+                     </div>
+                     <div class="col-sm-2 mb-2">
+                        <select class="form-control">                              
+                        <option>Block</option>                     
+                     </select> 
+                     </div>
+                     <div class="col-sm-2 mb-2">
+                        <select class="form-control">                              
+                        <option>Floor</option>                     
+                     </select> 
+                     </div>
+                     <div class="col-sm-4 mb-2">
+                        <span class="d-flex">
+                           <input type="text" class="form-control" placeholder="Property Number">
+                           <button class="btn btn-golden ml-2" type="submit"><i class="fe-search"></i></button>
+                        </span>
+                     </div>
+                  </div>                  
+               </form>
+               <div class="table-responsive">
+                  <table class="table mb-0">
+                     <thead class="thead-dark">
+                     <tr>                         
+                         <th>Client Name</th>
+                         <th>DG Used</th>
+                         <th>Bill Generated</th>
+                         <th>Bill Received</th>
+                         <th>Date</th>
+                         <th>Status</th>                         
+                         <th>Action</th>
+                     </tr>
+                     </thead>
+                     <tbody>
+                        
+                        {% for DG in DG_collection %}
+                        <tr>                            
+                            <td>{{DG.client_name}}</td>
+                            <td>{{DG.DG_used}}</td>
+                            <td>{{DG.bill_generated}}</td>
+                            <td>{{DG.bill_received}}</td>
+                            <td>{{DG.date}}</td>
+                            <td>{{DG.status}}</td>                            
+                            <td>
+                               <a href="{% url 'CMS_app:collection_DG_edit' DG.id %}"><i class="mdi mdi-square-edit-outline mdi-24px"></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                     </tbody>
+                  </table>
+              </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock content %}

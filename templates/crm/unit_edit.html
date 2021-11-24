@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div id="wrapper">
+<div class="navbar-custom">
+      {% include 'crm/navbar.html' %}
+      <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+          <li>
+              <button class="button-menu-mobile disable-btn waves-effect">
+                  <i class="fe-menu"></i>
+              </button>
+          </li>
+   
+          <li>
+              <h4 class="page-title-main">Unit Master/Edit</h4>
+          </li>
+   
+      </ul>
+   </div>   {% include 'crm/sidebar.html' %}
+   <div class="content-page">
+      <div class="content">
+         <div class="container-fluid">
+            <div class="row card p-3">
+               <form action="" method="POST">
+                  {% csrf_token %} 
+                  <div class="card row">
+                     <h3 style="text-align: center;">Units</h3>
+                     <hr/>
+                     
+                     <div class="row">
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="id_first_name">Society : </label> 
+                              {% render_field UnitForm.society class="form-control" %}
+
+                           </div>
+                        </div>
+                        
+                    </div>
+                   <div class="row">
+                
+                    <div class="col-md-6">  
+                        <div class="form-group">
+                        <label for="id_contact">Unit For : </label>
+                           {% render_field UnitForm.unit_for class="form-control" %}
+                        </div>
+                    </div>
+                    
+                  <div class="col-md-6">  
+                     <div class="form-group">
+                        <label for="id_contact">Type of Unit : </label>
+                        {% render_field UnitForm.type_of_unit class="form-control" %}
+                              
+                     </div>
+                  </div>
+               </div>
+               <div class="form-group mb-3">
+                  <div class="custom-control custom-checkbox">
+                      {{UnitForm.errors}}
+                     {% for message in messages %}
+                        {{message}}
+                     {% endfor %} 
+                  </div>
+               </div>
+                  <div class="form-group mb-0 text-center">
+                     <button class="btn btn-golden btn-rounded" type="submit"> Update </button>
+                     
+                  </div>
+               
+              </form>
+            </div>            
+         </div>
+      </div>
+   </div>
+</div>
+
+
+{% endblock content %}

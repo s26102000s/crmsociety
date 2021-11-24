@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="account-pages">
+   <div class="container">
+       <div class="row justify-content-center">
+           <div class="col-md-8 col-lg-6 col-xl-5">
+               <div class="text-center pb-3 pt-3">                   
+                    <img src="{% static 'images/logo.png' %}" alt="" height="72" class="logo-light mx-auto">
+                    
+                   <!-- <p class="text-muted mt-2 mb-4">CRM</p> -->
+               </div>
+               <div class="card">
+
+                   <div class="card-body p-4">
+                       
+                        <div class="text-center mb-4">
+                            <h4 class="text-uppercase mt-0">Sign In</h4>
+                        </div>
+                        <div class="text-center mb-4">
+                            {{message}}
+                        </div>
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <div class="form-group mb-3">
+                                <label for="username">Username</label>
+                                <input class="form-control" type="text" name="username" id="username" required="" placeholder="Enter your username">
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="password">Password</label>
+                                <input class="form-control" type="password" name="password" required="" id="password" placeholder="Enter your password">
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="checkbox-signin" checked>
+                                    <label class="custom-control-label" for="checkbox-signin">Remember me</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-0 text-center">
+                                <button class="btn btn-golden btn-block" type="submit"> Log In </button>
+                            </div>
+
+                        </form>
+
+                    </div> <!-- end card-body -->
+                </div>
+                <!-- end card -->
+               
+                <div class="row mt-3">
+                    <div class="col-12 text-center">
+                        <p> <a href="{% url 'CMS_app:forget_pass' %}" class="text-muted ml-1"><i class="fa fa-lock mr-1"></i>Forgot your password?</a></p>
+                        
+                    </div> <!-- end col -->
+                </div>
+                <!-- end row -->
+               
+            </div> <!-- end col -->
+        </div>
+        <!-- end row -->
+    </div>
+   <!-- end container -->
+</div>
+<!-- end page -->
+
+
+<!-- Vendor js -->
+<script src="{% static 'js/vendor.min.js' %}"></script>
+
+<!-- App js -->
+<script src="{% static 'js/app.min.js' %}"></script>
+
+
+
+{% endblock content %}

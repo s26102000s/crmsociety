@@ -1,0 +1,391 @@
+{% load static %}
+<div class="left-side-menu">
+
+   <div class="slimscroll-menu">
+
+       <!-- User box -->
+       <div class="user-box text-center">
+           <div class="dropdown">
+               <a href="#" class="user-name dropdown-toggle h5 mt-2 mb-1 d-block" data-toggle="dropdown"  aria-expanded="false">{{user.username}}</a>
+               
+           </div>
+           <p class="text-muted">Admin Head</p>
+
+           <!-- <ul class="list-inline">
+               <li class="list-inline-item">
+                   <a href="#" class="text-muted">
+                       <i class="mdi mdi-cog"></i>
+                   </a>
+               </li>
+
+               <li class="list-inline-item">
+                   <a href="#">
+                       <i class="mdi mdi-power"></i>
+                   </a>
+               </li>
+           </ul> -->
+       </div>
+
+       <!--- Sidemenu -->
+        <div id="sidebar-menu">
+
+            <ul class="metismenu" id="side-menu">               
+
+                <li>
+                    <a href="{% url 'CMS_app:dashboard' %}">
+                        <i class="mdi mdi-view-dashboard"></i>
+                        <span> Dashboard </span>
+                    </a>
+                </li>
+
+                
+                <li>
+                    <a href="#">
+                        <i class="mdi mdi-account-convert"></i>
+                        <span>Role Master</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="{% url 'CMS_app:new_role' %}"><i class="mdi mdi-plus"></i> New Role</a></li>
+                        <li><a href="{% url 'CMS_app:assign_role' %}"><i class="mdi mdi-account-multiple-plus"></i> Assign Role</a></li>
+                        <li><a href="{% url 'CMS_app:view_roles' %}"><i class="mdi mdi-view-carousel"></i> View all</a></li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <a href="#">
+                        <i class="mdi mdi-account-box-multiple"></i>
+                        <span> Clients Master</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class = "nav-second-level" aria-expanded="false">
+                        <li><a href="{% url 'CMS_app:client_dashboard' %}"><i class="mdi mdi-view-dashboard-outline"></i> Dashboard</a></li>
+                        <li><a href="{% url 'CMS_app:new_client' %}"><i class="mdi mdi-plus"></i>New</a></li>
+                        <li><a href="{% url 'CMS_app:caretaker' %}"><i class="mdi mdi-alpha-c"></i> Caretaker</a></li>
+                        <li><a href="{% url 'CMS_app:assign_property' %}"><i class="mdi mdi-star-box"></i> Assign Property</a></li>
+                        <li><a href="{% url 'CMS_app:view-clients' %}"><i class="mdi mdi-view-carousel"></i> View all</a></li>
+                    </ul>                   
+                </li>
+                
+                <li>
+                    <a href="#">
+                        <i class="mdi mdi-account-convert"></i>
+                        <span>Society Master</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="{% url 'CMS_app:society_dashboard' %}"><i class="mdi mdi-view-dashboard-outline"></i> Dashboard</a></li>
+                        <li>
+                            <a href="#">
+                            <span>Society</span>
+                            <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="{% url 'CMS_app:new_society' %}"><i class="mdi mdi-plus"></i>New</a></li>
+                            <li><a href="{% url 'CMS_app:view_society' %}"><i class="mdi mdi-view-carousel"></i> View all</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                            <span>Block</span>
+                            <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="{% url 'CMS_app:new_block' %}"><i class="mdi mdi-plus"></i>New</a></li>
+                            <li><a href="{% url 'CMS_app:view_blocks' %}"><i class="mdi mdi-view-carousel"></i> View all</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                            <span>Floor</span>
+                            <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="{% url 'CMS_app:new_floor' %}"><i class="mdi mdi-plus"></i>New</a></li>
+                            <li><a href="{% url 'CMS_app:view_floors' %}"><i class="mdi mdi-view-carousel"></i> View all</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="mdi mdi-home-group"></i>                     
+                        <span>Society Category Master</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="{% url 'CMS_app:society_category_dashboard' %}"><i class="mdi mdi-view-dashboard-outline"></i> Dashboard</a></li>
+                        <li>
+                            <a href="#">
+                            <span>Flats</span>
+                            <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="{% url 'CMS_app:new_flat' %}"><i class="mdi mdi-plus"></i>New</a></li>
+                            <li><a href="{% url 'CMS_app:view_flats' %}"><i class="mdi mdi-view-carousel"></i> View all</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                            <span>Villas</span>
+                            <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="{% url 'CMS_app:new_villa' %}"><i class="mdi mdi-plus"></i>New</a></li>
+                            <li><a href="{% url 'CMS_app:view_villas' %}"><i class="mdi mdi-view-carousel"></i> View all</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                            <span>Plots</span>
+                            <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="{% url 'CMS_app:new_plot' %}"><i class="mdi mdi-plus"></i>New</a></li>
+                            <li><a href="{% url 'CMS_app:view_plots' %}"><i class="mdi mdi-view-carousel"></i> View all</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                            <span>Commercial Shops</span>
+                            <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="{% url 'CMS_app:new_shop' %}"><i class="mdi mdi-plus"></i>New</a></li>
+                            <li><a href="{% url 'CMS_app:view_shops' %}"><i class="mdi mdi-view-carousel"></i> View all</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="mdi mdi-cash-100"></i>                     
+                        <span>Society Expenses Master</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="{% url 'CMS_app:society_expenses_dashboard' %}"><i class="mdi mdi-view-dashboard-outline"></i> Dashboard</a></li>
+                        <li><a href="{% url 'CMS_app:new_society_expense' %}"><i class="mdi mdi-plus"></i>New</a></li>
+                        <li><a href="{% url 'CMS_app:view_society_expenses' %}"><i class="mdi mdi-view-carousel"></i> View all</a></li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <a href="#">
+                        <i class="mdi mdi-home-currency-usd"></i>                     
+                        <span>Rental Master</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="{% url 'CMS_app:rental_dashboard' %}"><i class="mdi mdi-view-dashboard-outline"></i> Dashboard</a></li>
+                        <li><a href="{% url 'CMS_app:rental_allotment' %}"><i class="mdi mdi-home-plus"></i> Allotment</a></li>
+                        <li><a href="{% url 'CMS_app:view_rental' %}"><i class="mdi mdi-view-carousel"></i> View all</a></li>                        
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="mdi mdi-finance"></i>                     
+                        <span>Finance and Reporting Master</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="{% url 'CMS_app:finance_dashboard' %}"><i class="mdi mdi-view-dashboard-outline"></i> Dashboard</a></li>
+                        <li><a href="{% url 'CMS_app:demand_creation' %}">Demand Creation</a></li>
+                        <li>
+                            <a href="#">CAM</a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="{% url 'CMS_app:cam_demand' %}">CAM Demand</a></li>                                
+                                <li>
+                                    <a href="#">CAM Calculation</a>
+                                    <ul class="nav-second-level" aria-expanded="false">
+                                        <li><a href="{% url 'CMS_app:cam_calculation_rented_add' %}">Rented</a></li>
+                                        <li><a href="{% url 'CMS_app:cam_calculation_sold_add' %}">Sold</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li> 
+                                               
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-file-invoice"></i>                     
+                        <span>Recovery Management Master</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="{% url 'CMS_app:recovery_management_dashboard' %}"><i class="mdi mdi-view-dashboard-outline"></i> Dashboard</a></li>
+                        <li>
+                            <a href="#">
+                            <span>Invoice</span>
+                            <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="{% url 'CMS_app:recovery_invoice_new' %}"><i class="mdi mdi-plus"></i>New</a></li>
+                            <li><a href="{% url 'CMS_app:recovery_invoice_view' %}"><i class="mdi mdi-view-carousel"></i> View all</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                            <span>Schedule call</span>
+                            <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="{% url 'CMS_app:recovery_schedule_call_new' %}"><i class="mdi mdi-plus"></i>New</a></li>
+                                <li><a href="{% url 'CMS_app:recovery_schedule_call_view' %}"><i class="mdi mdi-view-carousel"></i> View all</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                            <span>Call Followup</span>
+                            <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="{% url 'CMS_app:recovery_call_followup_new' %}"><i class="mdi mdi-plus"></i>New</a></li>
+                                <li><a href="{% url 'CMS_app:recovery_call_followup_view' %}"><i class="mdi mdi-view-carousel"></i> View all</a></li>                                                        
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                            <span>Task</span>
+                            <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="{% url 'CMS_app:recovery_task_new' %}"><i class="mdi mdi-plus"></i>New</a></li>
+                            <li><a href="{% url 'CMS_app:recovery_task_view' %}"><i class="mdi mdi-view-carousel"></i> View all</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- <li>
+                    <a href="#">
+                        <i class="mdi mdi-flash"></i>                     
+                        <span>Electricity Master</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="{% url 'CMS_app:electricity_dashboard' %}">Dashboard</a></li>
+                        <li>
+                            
+                            <a href="#">Add Bill</a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="{% url 'CMS_app:electricity_bill_society' %}">Society</a></li>
+                                <li><a href="{% url 'CMS_app:electricity_bill_client' %}">Client</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{% url 'CMS_app:electricity_bill_view' %}">View</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="mdi mdi-water"></i>                     
+                        <span>Water Master</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="{% url 'CMS_app:water_dashboard' %}">Dashboard</a></li>
+                        <li>
+                            <a href="#">Add Bill</a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="{% url 'CMS_app:water_society' %}">Society</a></li>
+                                <li><a href="{% url 'CMS_app:water_client' %}">Client</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{% url 'CMS_app:water_view' %}">View</a></li>
+                    </ul>
+                </li> -->
+                <li>
+                    <a href="#">
+                        <i class="mdi mdi-animation"></i>                     
+                        <span>Unit Master</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="{% url 'CMS_app:unit_add' %}"><i class="mdi mdi-file-plus-outline"></i> Add</a></li>
+                        <li><a href="{% url 'CMS_app:unit_view' %}">View</a></li>
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="{% url 'CMS_app:report_new' %}">
+                        <i class="mdi mdi-clipboard-file"></i>                     
+                        <span>Report Master</span>                        
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="mdi mdi-sack-percent"></i>                     
+                        <span>Discount Master</span>  
+                        <span class="menu-arrow"></span>                      
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="{% url 'CMS_app:discount_add' %}"><i class="mdi mdi-file-plus-outline"></i> Add</a></li>
+                        <li><a href="{% url 'CMS_app:discount_view' %}">View</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="mdi mdi-account-cash"></i>                     
+                        <span>Collection Master</span>  
+                        <span class="menu-arrow"></span>                      
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="{% url 'CMS_app:collection_dashboard' %}">Dashboard</a></li>
+                        <li>
+                            <a href="#">CAM Received</a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="{% url 'CMS_app:collection_CAM_received_add' %}"><i class="mdi mdi-file-plus-outline"></i> Add</a></li>
+                                <li><a href="{% url 'CMS_app:collection_CAM_received_view' %}">View</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Rent</a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="{% url 'CMS_app:collection_rent_add' %}"><i class="mdi mdi-file-plus-outline"></i> Add</a></li>
+                                <li><a href="{% url 'CMS_app:collection_rent_view' %}">View</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Electricity</a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="{% url 'CMS_app:collection_electricity_add' %}"><i class="mdi mdi-file-plus-outline"></i> Add</a></li>
+                                <li><a href="{% url 'CMS_app:collection_electricity_view' %}">View</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Water</a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="{% url 'CMS_app:collection_water_add' %}"><i class="mdi mdi-file-plus-outline"></i> Add</a></li>
+                                <li><a href="{% url 'CMS_app:collection_water_view' %}">View</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">DG</a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="{% url 'CMS_app:collection_DG_add' %}"><i class="mdi mdi-file-plus-outline"></i> Add</a></li>
+                                <li><a href="{% url 'CMS_app:collection_DG_view' %}">View</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Income from Fund</a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="{% url 'CMS_app:collection_Income_add' %}"><i class="mdi mdi-file-plus-outline"></i> Add</a></li>
+                                <li><a href="{% url 'CMS_app:collection_Income_view' %}">View</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+        <!-- End Sidebar -->
+
+        <div class="clearfix"></div>
+
+    </div>
+    <!-- Sidebar -left -->
+
+</div>
+<!-- Left Sidebar End -->

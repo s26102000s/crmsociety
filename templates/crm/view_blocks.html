@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div id="wrapper">
+<div class="navbar-custom">
+      {% include 'crm/navbar.html' %}
+      <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+          <li>
+              <button class="button-menu-mobile disable-btn waves-effect">
+                  <i class="fe-menu"></i>
+              </button>
+          </li>
+   
+          <li>
+              <h4 class="page-title-main">Society Master/Block/View</h4>
+          </li>
+   
+      </ul>
+   </div>   {% include 'crm/sidebar.html' %}
+   <div class="content-page">
+      <div class="content">
+         <div class="container">
+            <div class="card-box">
+               <div class="row">
+                  <div class="col-md-9 mb-2">                     
+                     <div class="form-group col-md-4">
+                         <select class="form-control">
+                             <option>Society Name</option>                             
+                         </select>                         
+                     </div>
+                  </div>
+                  <div class="col-md-3 mb-2">                     
+                     <span class="d-flex">
+                        <input type="text" class="form-control" placeholder="Block name">
+                        <button class="btn btn-golden ml-2" type="submit"><i class="fe-search"></i></button>
+                     </span>                    
+                  </div>
+               </div>
+               <div class="table-responsive">
+                  <table class="table mb-0">
+                     <thead class="thead-dark">
+                     <tr>                         
+                         <th>Name of Blocks</th>
+                         <th>Action</th>
+                     </tr>
+                     </thead>
+                     <tbody>                        
+                        {% for block in all_blocks %}
+                        <tr>                            
+                           <td>{{block.block}}</td>
+                           <td>
+                              <a href="{% url 'CMS_app:edit_block' block.id %}"><i class="mdi mdi-home-edit mdi-24px"></i></a>
+                            </td>
+                        </tr>
+                        
+                        {% endfor %}
+                     </tbody>
+                  </table>
+              </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock content %}

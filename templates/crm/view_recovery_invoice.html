@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div id="wrapper">
+<div class="navbar-custom">
+      {% include 'crm/navbar.html' %}
+      <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+          <li>
+              <button class="button-menu-mobile disable-btn waves-effect">
+                  <i class="fe-menu"></i>
+              </button>
+          </li>
+   
+          <li>
+              <h4 class="page-title-main">Recovery Management Master/Invoice/View</h4>
+          </li>
+   
+      </ul>
+   </div>   {% include 'crm/sidebar.html' %}
+   <div class="content-page">
+      <div class="content">
+         <div class="container">
+            <div class="card-box">               
+               <form action="">
+                  <div class="row justify-content-end">
+                     <div class="col-sm-3 mb-3">
+                        <input type="date" class="form-control">                    
+                     </div>
+                     <div class="col-sm-3 mb-3">
+                        <span class="d-flex">
+                           <input type="text" class="form-control" placeholder="Client Name">
+                           <button class="btn btn-golden ml-2" type="submit"><i class="fe-search"></i></button>
+                        </span>
+                        
+                     </div>
+                     <div class="col-sm-3 mb-3">
+                        <span class="d-flex">
+                           <input type="text" class="form-control" placeholder="Amount">
+                           <button class="btn btn-golden ml-2" type="submit"><i class="fe-search"></i></button>
+                        </span>
+                        
+                     </div>
+                  </div>                  
+               </form>               
+               <div class="table-responsive">
+                  <table class="table mb-0">
+                     <thead class="thead-dark">
+                     <tr>                         
+                         <th>Date</th>
+                         <th>Name of Client</th>
+                         <th>Amount</th>
+                         <th>Purpose</th>
+                         <th>Mode of Payment</th>
+                         <th>Action</th>
+                     </tr>
+                     </thead>
+                     <tbody>                        
+                        {% for i in invoices %}
+                        <tr>                            
+                            <td>{{i.date}}</td>
+                            <td>{{i.name}}</td>
+                            <td>{{i.amount}}</td>
+                            <td>{{i.purpose}}</td>
+                            <td>{{i.mode_of_payment}}</td>                            
+                            <td>
+                               <a href=""><i class="mdi mdi-file-download-outline mdi-24px"></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                     </tbody>
+                  </table>
+              </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock content %}

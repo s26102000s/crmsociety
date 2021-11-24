@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div id="wrapper">
+<div class="navbar-custom">
+      {% include 'crm/navbar.html' %}
+      <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+          <li>
+              <button class="button-menu-mobile disable-btn waves-effect">
+                  <i class="fe-menu"></i>
+              </button>
+          </li>
+   
+          <li>
+              <h4 class="page-title-main">Recovery Management Master/Call Followup/New</h4>
+          </li>
+   
+      </ul>
+   </div>   {% include 'crm/sidebar.html' %}
+   <div class="content-page">
+      <div class="content">
+         <div class="container">
+            <div class="card-box">
+               <form action="" method="post" enctype="multipart/form-data">
+                  {% csrf_token %}                                                                
+                  <div class="row justify-content-center">
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <label for="id_client_name">Client Name</label>                     
+                           {% render_field RecoveryCallFollowupForm.client_name class="form-control" placeholder="Client Name" %}
+                        </div>
+                        <div class="form-group">
+                           <label for="id_date">Date</label>                     
+                           {% render_field RecoveryCallFollowupForm.date class="form-control" type="date" %}
+                        </div>
+                        <div class="form-group">
+                           <label for="id_time">Time</label>                     
+                           {% render_field RecoveryCallFollowupForm.time class="form-control" type="time" %}
+                        </div>
+                        <div class="form-group">
+                           <label for="id_follow_up">Followup</label>                     
+                           {% render_field RecoveryCallFollowupForm.follow_up class="form-control" placeholder="Followup..." %}
+                        </div>                        
+                     </div>                                                                     
+                  </div>                    
+                      
+                  <div class="form-group mb-3">
+                     <div class="custom-control custom-checkbox">
+                         {{RecoveryCallFollowupForm.errors}}
+                        {% for message in messages %}
+                           {{message}}
+                        {% endfor %} 
+                     </div>
+                  </div>
+                  <div class="form-group mb-0 text-center">
+                     <button class="btn btn-golden btn-rounded" type="submit"> Submit Followup </button>
+                     
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock content %}

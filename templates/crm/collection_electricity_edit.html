@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div id="wrapper">
+   <div class="navbar-custom">
+      {% include 'crm/navbar.html' %}
+      <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+          <li>
+              <button class="button-menu-mobile disable-btn waves-effect">
+                  <i class="fe-menu"></i>
+              </button>
+          </li>
+   
+          <li>
+              <h4 class="page-title-main">Collection Master/Electricity/Edit</h4>
+          </li>
+   
+      </ul>
+   </div>
+   {% include 'crm/sidebar.html' %}
+   <div class="content-page">
+      <div class="content">
+         <div class="container-fluid">
+            <div class="row card p-3">
+               <form action="" method="POST">
+                  {% csrf_token %} 
+                  
+                  <h3 style="text-align: center;">Collection Electricity Edit</h3>
+                  <hr/>
+                  <div class="row">
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <label for="id_first_name">Society : </label> 
+                           {% render_field CollectionElectricityForm.society class="form-control" %}       
+      
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <label for="id_first_name">Property Type :  </label> 
+                           {% render_field CollectionElectricityForm.property_type class="form-control" %}                 
+                        </div>
+                        <div class="form-group">
+                           <label for="id_contact">Floor : </label>
+                           {% render_field CollectionElectricityForm.floor class="form-control" %}               
+                        </div>
+                        <div class="form-group">
+                           <label for="id_first_name">Client Name : </label>
+                           {% render_field CollectionElectricityForm.client_name class="form-control" placeholder="auto Generated" disabled=True %}                                                  
+                        </div>
+                     </div>
+                     <div class="col-md-6">  
+                        <div class="form-group">
+                           <label for="id_contact">Block : </label>
+                           {% render_field CollectionElectricityForm.block class="form-control" %}             
+                        </div>
+                        <div class="form-group">
+                           <label for="id_first_name">Date : </label>
+                           {% render_field CollectionElectricityForm.date class="form-control" type="date" %}                                             
+                        </div>
+                        <div class="form-group">
+                           <label for="id_first_name">Electricity Generated : </label>
+                           {% render_field CollectionElectricityForm.electricity_generated class="form-control" placeholder="auto Generated" disabled=True %}                                            
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <label for="id_first_name">Electricity Received : </label>
+                           {% render_field CollectionElectricityForm.electricity_received class="form-control" %}                   
+                        </div>
+                     </div>
+                  </div>
+               
+                  <div class="form-group mb-3">
+                     <div class="custom-control custom-checkbox">
+                         {{CollectionElectricityForm.errors}}
+                        {% for message in messages %}
+                           {{message}}
+                        {% endfor %} 
+                     </div>
+                  </div> 
+                  <div class="form-group mb-0 text-center">
+                     <button class="btn btn-golden btn-rounded" type="submit"> Update </button>
+                  </div>               
+               </form>
+            </div>            
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock content %}

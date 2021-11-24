@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div id="wrapper">
+<div class="navbar-custom">
+      {% include 'crm/navbar.html' %}
+      <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+          <li>
+              <button class="button-menu-mobile disable-btn waves-effect">
+                  <i class="fe-menu"></i>
+              </button>
+          </li>
+   
+          <li>
+              <h4 class="page-title-main">Recovery Management Master/Task/View</h4>
+          </li>
+   
+      </ul>
+   </div>   {% include 'crm/sidebar.html' %}
+   <div class="content-page">
+      <div class="content">
+         <div class="container">
+            <div class="card-box">               
+               <form action="">
+                  <div class="row justify-content-end">
+                     <div class="col-sm-3 mb-2">
+                        <span class="d-flex">
+                           <input type="text" class="form-control" placeholder="Task">
+                           <button class="btn btn-golden ml-2" type="submit"><i class="fe-search"></i></button>
+                        </span>
+                     </div>
+                     <div class="col-sm-3 mb-2">
+                        <span class="d-flex">
+                           <input type="text" class="form-control" placeholder="Created By">
+                           <button class="btn btn-golden ml-2" type="submit"><i class="fe-search"></i></button>
+                        </span>
+                     </div>
+                     <div class="col-sm-3 mb-2">
+                        <input type="date" class="form-control">
+                     </div>
+                  </div>                    
+               </form>
+               
+               <div class="table-responsive">
+                  <table class="table mb-0">
+                     <thead class="thead-dark">
+                     <tr>                         
+                         <th>Task Name</th>
+                         <th>Date</th>
+                         <th>Time</th>
+                         <th>Task Detail</th>
+                         <th>Assigned to</th>
+                         <th>Action</th>
+                     </tr>
+                     </thead>
+                     <tbody>                        
+                        {% for t in tasks %}
+                        <tr>                            
+                            <td>{{t.task_name}}</td>
+                            <td>{{t.date}}</td>
+                            <td>{{t.time}}</td>
+                            <td>{{t.task_detail}}</td>
+                            <td>{{t.assign_to}}</td>                            
+                            <td>
+                               <a href="{% url 'CMS_app:recovery_task_edit' t.id %}"><i class="mdi mdi-square-edit-outline mdi-24px"></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                     </tbody>
+                  </table>
+              </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock content %}

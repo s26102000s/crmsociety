@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div id="wrapper">
+    <div class="navbar-custom">
+     <div class="navbar-custom">
+      {% include 'crm/navbar.html' %}
+       <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+            <li>
+                <button class="button-menu-mobile disable-btn waves-effect">
+                    <i class="fe-menu"></i>
+                </button>
+            </li>
+     
+            <li>
+                <h4 class="page-title-main">Dashboard</h4>
+            </li>
+     
+        </ul>
+    </div>
+   {% include 'crm/sidebar.html' %}
+   {% block PageTitle %}DashBoard{% endblock PageTitle %}
+   <div class="content-page">
+      <div class="content" style="overflow: scroll !important;">
+
+          <!-- Start Content-->
+          <div class="container-fluid">
+            <div class="row">
+               <div class="col-xl-4 col-md-4">
+                  <div class="card-box">                     
+                    <h4 class="header-title mt-0 mb-4">Total Client/Residents</h4>
+                    <div class="widget-chart-1">
+                        <div class="widget-chart-box-1 float-left" dir="ltr">
+                            <input data-plugin="knob" data-width="80" data-height="80" data-fgColor="#f05050 "
+                                   data-bgColor="#F9B9B9" value="{{total_clients}}"
+                                   data-skin="tron" data-angleOffset="180" data-readOnly=true
+                                   data-thickness=".15"/>
+                        </div>
+                        <div class="widget-detail-1 text-right">
+                            <h2 class="font-weight-normal pt-2 mb-1"> {{total_clients}} </h2>
+                            <p class="text-muted mb-1">Revenue today</p>
+                        </div>
+                    </div>
+                  </div>
+               </div>
+               <div class="col-xl-4 col-md-4">
+                  <div class="card-box">                    
+                    <h4 class="header-title mt-0 mb-4">Total Societies</h4>
+                    <div class="widget-chart-1">
+                        <div class="widget-chart-box-1 float-left" dir="ltr">
+                            <input data-plugin="knob" data-width="80" data-height="80" data-fgColor="#f05050 "
+                                   data-bgColor="#F9B9B9" value="{{total_societies}}"
+                                   data-skin="tron" data-angleOffset="180" data-readOnly=true
+                                   data-thickness=".15"/>
+                        </div>
+                        <div class="widget-detail-1 text-right">
+                            <h2 class="font-weight-normal pt-2 mb-1"> {{total_societies}}</h2>
+                            <p class="text-muted mb-1">Revenue today</p>
+                        </div>
+                    </div>
+                  </div>
+               </div>
+               <div class="col-xl-4 col-md-4">
+                  <div class="card-box">                    
+                    <h4 class="header-title mt-0 mb-4">Total Expenses</h4>
+                    <div class="widget-chart-1">
+                        <div class="widget-chart-box-1 float-left" dir="ltr">
+                            <input data-plugin="knob" data-width="80" data-height="80" data-fgColor="#f05050 "
+                                   data-bgColor="#F9B9B9" value="{{total_expenses}}"
+                                   data-skin="tron" data-angleOffset="180" data-readOnly=true
+                                   data-thickness=".15"/>
+                        </div>
+                        <div class="widget-detail-1 text-right">
+                            <h2 class="font-weight-normal pt-2 mb-1"> {{total_expenses}} </h2>
+                            <p class="text-muted mb-1">Revenue today</p>
+                        </div>
+                    </div>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-3 col-md-6">
+                    <div class="card-box">                        
+                        <h4 class="header-title mt-0 mb-3">Flats</h4>
+                        <div class="widget-box-2">
+                            <div class="widget-chart-box-1 float-left" dir="ltr">
+                                <input data-plugin="knob" data-width="80" data-height="80" data-fgColor="#f05050 "
+                                       data-bgColor="#F9B9B9" value="{{total_flats}}"
+                                       data-skin="tron" data-angleOffset="180" data-readOnly=true
+                                       data-thickness=".15"/>
+                            </div>
+                            <div class="widget-detail-1 text-right">
+                                <h2 class="font-weight-normal pt-2 mb-1"> {{total_flats}} </h2>
+                                <p class="text-muted mb-1">Revenue today</p>
+                            </div>
+                            <div class="progress progress-bar-alt-success progress-sm">
+                                <div class="progress-bar bg-success" role="progressbar"
+                                        aria-valuenow="{{total_flats}}" aria-valuemin="0" aria-valuemax="100">
+                                    <span class="sr-only">{{total_flats}}% Complete</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- end col -->
+                <div class="col-xl-3 col-md-6">
+                    <div class="card-box">                        
+                        <h4 class="header-title mt-0 mb-3">Villas</h4>
+                        <div class="widget-box-2">
+                            <div class="widget-chart-box-1 float-left" dir="ltr">
+                                <input data-plugin="knob" data-width="80" data-height="80" data-fgColor="#f05050 "
+                                       data-bgColor="#F9B9B9" value="{{total_villas}}"
+                                       data-skin="tron" data-angleOffset="180" data-readOnly=true
+                                       data-thickness=".15"/>
+                            </div>
+                            <div class="widget-detail-1 text-right">
+                                <h2 class="font-weight-normal pt-2 mb-1"> {{total_villas}} </h2>
+                                <p class="text-muted mb-1">Revenue today</p>
+                            </div>
+                            <div class="progress progress-bar-alt-success progress-sm">
+                                <div class="progress-bar bg-success" role="progressbar"
+                                        aria-valuenow="{{total_villas}}" aria-valuemin="0" aria-valuemax="100">
+                                    <span class="sr-only">{{total_villas}}% Complete</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- end col -->
+                <div class="col-xl-3 col-md-6">
+                    <div class="card-box">                        
+                        <h4 class="header-title mt-0 mb-3">Plots</h4>
+                        <div class="widget-box-2">
+                            <div class="widget-chart-box-1 float-left" dir="ltr">
+                                <input data-plugin="knob" data-width="80" data-height="80" data-fgColor="#f05050 "
+                                       data-bgColor="#F9B9B9" value="{{total_plots}}"
+                                       data-skin="tron" data-angleOffset="180" data-readOnly=true
+                                       data-thickness=".15"/>
+                            </div>
+                            <div class="widget-detail-1 text-right">
+                                <h2 class="font-weight-normal pt-2 mb-1"> {{total_plots}} </h2>
+                                <p class="text-muted mb-1">Revenue today</p>
+                            </div>
+                            <div class="progress progress-bar-alt-success progress-sm">
+                                <div class="progress-bar bg-success" role="progressbar"
+                                        aria-valuenow="{{total_plots}}" aria-valuemin="0" aria-valuemax="100">
+                                    <span class="sr-only">{{total_plots}}% Complete</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- end col -->
+                <div class="col-xl-3 col-md-6">
+                    <div class="card-box">                        
+                        <h4 class="header-title mt-0 mb-3">Commercial Shops</h4>
+                        <div class="widget-box-2">
+                            <div class="widget-chart-box-1 float-left" dir="ltr">
+                                <input data-plugin="knob" data-width="80" data-height="80" data-fgColor="#f05050 "
+                                       data-bgColor="#F9B9B9" value="{{total_shops}}"
+                                       data-skin="tron" data-angleOffset="180" data-readOnly=true
+                                       data-thickness=".15"/>
+                            </div>
+                            <div class="widget-detail-1 text-right">
+                                <h2 class="font-weight-normal pt-2 mb-1"> {{total_shops}} </h2>
+                                <p class="text-muted mb-1">Revenue today</p>
+                            </div>
+                            <div class="progress progress-bar-alt-success progress-sm">
+                                <div class="progress-bar bg-success" role="progressbar"
+                                        aria-valuenow="{{total_shops}}" aria-valuemin="0" aria-valuemax="100">
+                                    <span class="sr-only">{{total_shops}}% Complete</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- end col -->
+            </div>
+            <!-- end row -->
+            <div class="row">
+               <div class="col-xl-4">
+                  <div class="card-box">                    
+                    <h4 class="header-title mt-0">Statistics</h4>
+                    <div id="morris-bar-example" dir="ltr" style="height: 280px;" class="morris-chart"></div>
+                  </div>
+               </div>
+               
+            </div>
+          </div>
+          <!-- End Container fluid -->
+      </div>  
+        <!-- End content -->
+   </div>
+   <!-- End content-page -->
+</div>
+
+
+
+{% endblock content %}

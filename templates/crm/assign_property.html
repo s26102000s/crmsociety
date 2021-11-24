@@ -1,0 +1,203 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div id="wrapper">
+   <div class="navbar-custom">
+      {% include 'crm/navbar.html' %}
+      <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+          <li>
+              <button class="button-menu-mobile disable-btn waves-effect">
+                  <i class="fe-menu"></i>
+              </button>
+          </li>
+   
+          <li>
+              <h4 class="page-title-main">Client Master/Assign Property</h4>
+          </li>
+   
+      </ul>
+  </div>
+   {% include 'crm/sidebar.html' %}
+   <div class="content-page">
+      <div class="content">
+         <div class="container">
+            <div class="card-box p-3 justify-content-center align-items-center">
+               <h3 class="text-center mb-3">Assign Property to Client</h3>
+               <form action="" method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}                                              
+                  <div class="row">                     
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <label for="id_client_ID">Client ID</label>                     
+                           {% render_field AssignedPropertyForm.client_ID class="form-control" placeholder="Client ID" %}
+                        </div>                        
+                        <div class="form-group">
+                           <label for="id_first_name">First Name</label>                     
+                           {% render_field AssignedPropertyForm.first_name class="form-control" placeholder="First Name" %}
+                        </div>
+                                             
+                     </div> 
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <label for="id_date">Date</label>                     
+                           {% render_field AssignedPropertyForm.date class="form-control" type="date" %}
+                        </div>
+                        <div class="form-group">
+                           <label for="id_last_name">Last Name</label>                     
+                           {% render_field AssignedPropertyForm.last_name class="form-control" placeholder="Last Name" %}
+                        </div>                                                  
+                     </div>  
+                  </div> 
+                  <h4>Property Details</h4>
+                  <div class="row">
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <label for="id_society">Society</label>                     
+                           {% render_field AssignedPropertyForm.society class="form-control" %}
+                        </div>
+                        <div class="form-group">
+                           <label for="id_floor">Floor</label>                     
+                           {% render_field AssignedPropertyForm.floor class="form-control" %}
+                        </div>
+                        <div class="form-group">
+                           <label for="id_property_number">Property Number</label>                     
+                           {% render_field AssignedPropertyForm.property_number class="form-control" placeholder="Property Number" %}
+                        </div>                         
+                        
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <label for="id_block">Block</label>                     
+                           {% render_field AssignedPropertyForm.block class="form-control" %}
+                        </div>
+                        <div class="form-group">
+                           <label for="id_type_of_property">Type of Property</label>                     
+                           {% render_field AssignedPropertyForm.type_of_property class="form-control" %}
+                        </div>
+                        <div class="d-flex form-group">       
+                           <label for="id_rent">Rent</label>                                                                   
+                           {% render_field AssignedPropertyForm.rent class="ml-2 custom-control custom-checkbox" %}                            
+                        </div> 
+                     </div>
+                  </div>
+                  <!-- hide -->
+                  <div id="charge" style="display: none;">
+                     <div class="row">
+                        <div class="col-md-6">
+                           <div class="form-group">
+                           <label for="id_client_rent">Rent</label>                     
+                           <input type="text" name="rent" class="form-control" placeholder="Rent">
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="form-group">
+                           <label for="id_client_security">Security Deposit</label>                     
+                           <input type="text" name="security_deposit" class="form-control" placeholder="Security Deposit">
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-md-6">
+                           <div class="form-group">
+                           <label for="id_penalty">Penalty</label>                     
+                           <input type="text" name="penalty" class="form-control" placeholder="Penalty">
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="id_electricity_bill">Electricity Bill</label> 
+                              <select name="Electricity_bill" class="form-control">
+                                     <option selected disabled =true >---- Select option ----</option>
+                                     <option vlaue="Self">Self</option>
+
+                              </select>       
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row">
+
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="id_first_name">Water Bill</label> 
+                              <select name="" class="form-control">
+                                     <option selected disabled =true >---- Select option ----</option>
+                                     <option vlaue="Ashopurna">Ashopurna</option>
+
+                              </select>       
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="form-group">
+                           <label for="id_other_charge">Other Charges</label>                     
+                           <input type="text" name="other_charges" class="form-control" placeholder="Other Charges">
+                           </div>
+                        </div>
+                     </div>
+                  
+                     <div class="row">
+
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="id_esc_amount">Escalation Amount</label> 
+                              <input type="text" name="escalation_amount" class="form-control" placeholder="Escalation Amount">
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="form-group">
+                           <label for="id_tenure_period">Tenure Period</label>                     
+                           <input type="text" name="tenure_period" class="form-control" placeholder="Tenure Period">
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="row">
+
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="id_date_renewal">Date of Renewal</label> 
+                              <input type="date" name="date_renewal" class="form-control">
+                           </div>
+                        </div>
+                     </div>
+                  
+                  </div>
+                  <!-- end -->
+                  <h4>Maintenance</h4>
+                  <div class="row">
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <label for="id_CAM">CAM</label>                     
+                           {% render_field AssignedPropertyForm.CAM class="form-control" placeholder="CAM" %}
+                        </div>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <div class="custom-control custom-checkbox">
+                         {{AssignedPropertyForm.errors}}
+                     </div>
+                  </div>
+                  <div class="form-group mb-0 text-center">
+                     <button class="btn btn-golden btn-rounded" type="submit"> Assign Property </button>
+                     
+                  </div>
+
+              </form>
+            </div>            
+         </div>
+      </div>
+   </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+$("#id_rent").change(function(){
+  if($(this).is(':checked')) 
+    $("#charge").show(); // checked
+  else
+    $("#charge").hide(); 
+});
+</script>
+{% endblock content %}

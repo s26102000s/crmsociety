@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+
+<div id="wrapper">
+<div class="navbar-custom">
+      {% include 'crm/navbar.html' %}
+      <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+          <li>
+              <button class="button-menu-mobile disable-btn waves-effect">
+                  <i class="fe-menu"></i>
+              </button>
+          </li>
+   
+          <li>
+              <h4 class="page-title-main">Finance and Reporting Master/CAM/CAM calculation/Rented/New</h4>
+          </li>
+   
+      </ul>
+   </div>   {% include 'crm/sidebar.html' %}
+   <div class="content-page">
+      <div class="content">
+         <div class="container">
+            <div class="card-box">
+               <span class="d-flex p-2">
+                  <a class="btn btn-golden m-2" href="{% url 'CMS_app:cam_calculation_rented_add' %}">Add</a>
+                  <a class="btn btn-golden m-2" href="{% url 'CMS_app:cam_calculation_rented_view' %}">View</a>
+               </span>
+               <form action="" method="post" enctype="multipart/form-data">
+                  {% csrf_token %}                                                                
+                  <div class="row justify-content-center">
+                     <div class="col-md-6">                        
+                        <div class="form-group">
+                           <label for="id_society">Society</label>                     
+                           {% render_field CamCalculationForm.society class="form-control" %}
+                        </div>
+                        <div class="form-group">
+                           <label for="id_block">Block</label>                     
+                           {% render_field CamCalculationForm.block class="form-control" %}
+                        </div>
+                        <div class="form-group">
+                           <label for="id_property_number">Property Number</label>                     
+                           {% render_field CamCalculationForm.property_number class="form-control" placeholder="Property Number" %}
+                        </div>
+                        <div class="form-group">
+                           <label for="id_CAM_charges">CAM</label>                     
+                           {% render_field CamCalculationForm.CAM class="form-control" placeholder="CAM charges" %}
+                        </div>                        
+                     </div>
+                     <div class="col-md-6">                        
+                        <div class="form-group">
+                           <label for="id_property_type">Property Type</label>                     
+                           {% render_field CamCalculationForm.property_type class="form-control" %}
+                        </div>
+                        <div class="form-group">
+                           <label for="id_floor">Floor</label>                     
+                           {% render_field CamCalculationForm.floor class="form-control" %}
+                        </div>                        
+                        <div class="form-group">
+                           <label for="id_client_name">Client Name</label>                     
+                           {% render_field CamCalculationForm.client_name class="form-control" placeholder="Auto Generated" %}
+                        </div>                        
+                     </div>                                                                     
+                  </div>                    
+                      
+                  <div class="form-group mb-3">
+                     <div class="custom-control custom-checkbox">
+                         {{CamCalculationForm.errors}}
+                                       
+                        {% for message in messages %}
+                           {{message}}
+                        {% endfor %} 
+                     </div>                        
+                  </div>
+                  <div class="form-group mb-0 text-center">
+                     <button class="btn btn-golden btn-rounded" type="submit"> Create </button>
+                     
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock content %}

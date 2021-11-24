@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div id="wrapper">
+<div class="navbar-custom">
+      {% include 'crm/navbar.html' %}
+      <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+          <li>
+              <button class="button-menu-mobile disable-btn waves-effect">
+                  <i class="fe-menu"></i>
+              </button>
+          </li>
+   
+          <li>
+              <h4 class="page-title-main">Society Category Master/Commercial Shop/Edit</h4>
+          </li>
+   
+      </ul>
+   </div>   {% include 'crm/sidebar.html' %}
+   <div class="content-page">
+      <div class="content">
+         <div class="container">
+            <div class="card-box">
+               <form action="" method="post">
+                  {% csrf_token %}                             
+                  <h4>Society Details</h4>                 
+                  <div class="row">
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <label for="id_society">Society</label>                     
+                           {% render_field ShopForm.society class="form-control" %}
+                        </div>
+                        <div class="form-group">
+                           <label for="id_floor">Floor</label>                     
+                           {% render_field ShopForm.floor class="form-control" %}
+                        </div>
+                     </div>   
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <label for="id_floor">Block</label>                     
+                           {% render_field ShopForm.block class="form-control" %}
+                        </div>
+                     </div>                                                                 
+                  </div>  
+                  <h4>Shop Details</h4>
+                  <div class="row justify-content-center">
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <label for="id_shop_number">Shop Number</label>                     
+                           {% render_field ShopForm.shop_number class="form-control" placeholder="Shop Number" %}
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <label for="id_Area">Area</label>                     
+                           {% render_field ShopForm.area class="form-control" placeholder="Area of Shop" %}
+                        </div>
+                     </div>                                                                     
+                  </div>   
+                  <div class="row justify-content-center">
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <label for="id_length">Length</label>                     
+                           {% render_field ShopForm.length class="form-control" placeholder="Length of Shop" %}
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <label for="id_width">Width</label>                     
+                           {% render_field ShopForm.width class="form-control" placeholder="Width of Shop" %}
+                        </div>
+                     </div>                                                                    
+                  </div> 
+                  <div class="row justify-content-center">
+                     <div class="col-md-6">
+                        <h4>Ownership Details</h4>
+                        <div class="form-group">                           
+                           {% render_field ShopForm.ownership %}
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <h4>Occupancy Details</h4>
+                        <div class="form-group">                           
+                           {% render_field ShopForm.occupancy %}
+                        </div>
+                     </div>
+                  </div>      
+                  <div class="form-group mb-3">
+                     <div class="custom-control">
+                         {{ShopForm.errors}}
+                        {% for message in messages %}
+                           {{message}}
+                        {% endfor %} 
+                     </div>
+                  </div>
+                  <div class="form-group mb-0 text-center">
+                     <button class="btn btn-golden btn-rounded" type="submit"> Update Commercial Shop </button>
+                     
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>          
+</div>
+{% endblock content %}

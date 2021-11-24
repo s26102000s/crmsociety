@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div id="wrapper">
+   <div class="navbar-custom">
+      {% include 'crm/navbar.html' %}
+      <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+          <li>
+              <button class="button-menu-mobile disable-btn waves-effect">
+                  <i class="fe-menu"></i>
+              </button>
+          </li>
+   
+          <li>
+              <h4 class="page-title-main">Client Master/Caretaker</h4>
+          </li>
+   
+      </ul>
+  </div>
+   {% include 'crm/sidebar.html' %}
+   <div class="content-page">
+      <div class="content">
+         <div class="container-fluid">
+            <div class="row card p-3">
+               <form action="" method="POST">
+                  {% csrf_token %} 
+                  <div class="card row">
+                     <h4>Personal Information:</h4>
+                     <div class="row">
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="id_username">Client Id</label>
+                              <input type="text" class="form-control" placeholder="Client Id">
+                           </div> 
+                        </div>
+                     </div>
+                        
+                     <div class="row">
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="id_first_name">First Name</label>                     
+                              {% render_field CaretakerForm.first_name class="form-control" placeholder="First Name" %}
+                           </div>
+                           <div class="form-group">
+                              <label for="id_contact">Contact</label>
+                              {% render_field CaretakerForm.contact class="form-control" placeholder="Contact" %}
+                           </div>
+                           <div class="form-group">
+                              <label for="id_permanent_address">Permanent Address</label>
+                              {% render_field CaretakerForm.permanent_address class="form-control" placeholder="Permanent Address" %}
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="id_last_name">Last Name</label>
+                              {% render_field CaretakerForm.last_name class="form-control" placeholder="Last Name" %}
+                           </div>
+                           <div class="form-group">
+                              <label for="id_email">Email Address</label>
+                              {% render_field CaretakerForm.email class="form-control" placeholder="Email Address" %}
+                           </div>                           
+                           <div class="form-group">
+                              <label for="id_current_address">Current Address</label>
+                              {% render_field CaretakerForm.current_address class="form-control" placeholder="Current Address" %}
+                           </div>
+                        </div>
+                     </div> 
+                  </div>
+                                   
+                  
+                  <div class="form-group mb-3">
+                     <div class="custom-control custom-checkbox">
+                         {{CaretakerForm.errors}}
+                        {% for message in messages %}
+                           {{message}}
+                        {% endfor %} 
+                     </div>
+                  </div>
+                  <div class="form-group mb-0 text-center">
+                     <button class="btn btn-golden" type="submit"> Add Caretaker </button>
+                     
+                  </div>
+
+              </form>
+            </div>            
+         </div>
+      </div>
+   </div>
+</div>
+
+
+{% endblock content %}

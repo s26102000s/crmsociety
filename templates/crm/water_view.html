@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div id="wrapper">
+<div class="navbar-custom">
+      {% include 'crm/navbar.html' %}
+      <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+          <li>
+              <button class="button-menu-mobile disable-btn waves-effect">
+                  <i class="fe-menu"></i>
+              </button>
+          </li>
+   
+          <li>
+              <h4 class="page-title-main">Water Master/View</h4>
+          </li>
+   
+      </ul>
+   </div>   {% include 'crm/sidebar.html' %}
+   <div class="content-page">
+      <div class="content">
+         <div class="container-fluid">
+            <div class="row card p-3">
+               <form action="" method="POST">
+                  {% csrf_token %} 
+                  <h3 style="text-align: center;">Water Bill View</h3>
+                  <hr/>
+                  
+                  <div class="row">
+                     <div class="col-md-2">
+                        <div class="form-group">
+                           <label for="id_first_name">Society : </label> 
+                              <select name="society" class="form-control">
+                                  <option selected disabled =true >Select Society</option>
+                                  <option vlaue="hind">Hind</option>
+                              </select>       
+                        </div>
+                     </div>
+                     
+                     <div class="col-md-2">  
+                        <div class="form-group">
+                           <label for="id_contact">Block : </label>
+                             <select name="block" class="form-control">
+                                 <option selected disabled =true >---- Select option ----</option>
+                                 <option vlaue="your">Your</option>
+
+                             </select>       
+                        </div>
+                     </div>
+                     <div class="col-md-2">
+                        <div class="form-group">
+                           <label for="id_first_name">Floor : </label> 
+                           <select name="floor" class="form-control">
+                               <option selected disabled =true >---- Select option ----</option>
+                               <option vlaue="floor">Floor</option>   
+                           </select>       
+                        </div>
+                     </div>                     
+                     <div class="col-md-2">  
+                        <div class="form-group">
+                           <label for="id_contact">Property Type : </label>
+                           <select name="property_type" class="form-control">
+                              <option selected disabled =true >---- Select option ----</option>
+                              <option vlaue="P_type">Property Type</option>   
+                           </select>       
+                        </div>
+                     </div>
+                     <div class="col-md-3">
+                        <label for="id_first_name">Property Number : </label>
+                        <div class="d-flex form-group">                           
+                           <input type="text" name="property_number" class="form-control" placeholder="Property Number">  
+                           <button class="btn btn-golden ml-2" type="submit"><i class="fe-search"></i></button>                                      
+                        </div>
+                     </div>
+                  </div>               
+                  <table class="table">
+                     <thead class="thead-dark">
+                     <tr>
+                        <th scope="col">Client</th>
+                        <th scope="col">Property Number</th>
+                        <th scope="col">Consumption</th>
+                        <th scope="col">Charge Per Unit</th>
+                        <th scope="col">Total Bill</th>
+                        <th scope="col">Action</th>
+                     </tr>
+                     </thead>
+                     <tbody>
+                     {% for wb in water_bills %}
+                        <tr>
+                           <td>{{wb.client_name}}</td>
+                           <td>{{wb.property_number}}</td>
+                           <td>{{wb.consumption_unit}}</td>
+                           <td>{{wb.per_unit_charge}}</td>
+                           <td>{{total_bill}}</td>
+                           <td>
+                              <a href=""><i class="mdi mdi-square-edit-outline mdi-24px"></i></a>
+                           </td>
+                        </tr>
+                     {% endfor %}
+                     </tbody>
+                  </table>                     
+               </form>
+            </div>            
+         </div>
+      </div>
+   </div>
+</div>
+
+
+{% endblock content %}
